@@ -23,6 +23,8 @@ A high-fidelity desktop client for Tidal that downloads, plays, and organizes lo
 - **Album art** — selectable embed quality (320 / 640 / 1280), hover tilt, full-resolution lightbox, separate art download path
 - **Persistent state** — library index with Tidal canonical IDs (handles same-name artist collision like *LiSA* vs *LISA*)
 - **History navigation** — mouse thumb buttons (XButton1 / XButton2) for app-wide back/forward across pages
+- **Probe available quality** — quick check whether your subscription tier actually returns lossless or AAC for sample tracks (Settings → Check available quality)
+- **Library maintenance** — resync metadata + reorganize files from Tidal online, or rebuild the library index offline from `TIDAL_GUID` / `TIDAL_META` Vorbis comments embedded in your FLACs
 
 ## Download
 

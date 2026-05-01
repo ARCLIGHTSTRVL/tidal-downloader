@@ -63,5 +63,9 @@ Initial public release on Windows.
 - Search with discography view, favorites, recent history
 - Custom dark UI with frameless window and macOS-style buttons
 - NSIS installer with upgrade / downgrade / repair detection
+- **Probe Tidal quality availability** (Settings → Check available quality) — diagnoses Tidal's AAC silent-downgrade by sampling two short test tracks per tier and reporting whether each one came back as FLAC or AAC.
+- **`TIDAL_GUID` / `TIDAL_META` Vorbis comments** embedded into every downloaded FLAC at write time, enabling offline rebuild of the library index from the audio files themselves.
+- **Library maintenance** — *Resync from TIDAL (online)* re-fetches metadata + re-applies your folder/naming rules to existing files; *Rebuild from FLAC (offline)* reconstructs the library index from the embedded Vorbis comments.
+- Splash window (1280 × 1280, ≥ 600 ms minimum), single-instance lock, spacebar play/pause, album catalog pagination (limit = 50), DevTools blocked in packaged builds.
 
 (See repository for the full code-level history starting v1.0.2.)

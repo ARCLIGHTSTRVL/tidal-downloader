@@ -13,6 +13,13 @@ This guide covers everything you need to use the app day-to-day. For installatio
 - [Player bar](#player-bar)
 - [Audio device picker (Windows)](#audio-device-picker-windows)
 - [Settings reference](#settings-reference)
+  - [Account](#account)
+  - [Playback](#playback)
+  - [Audio quality](#audio-quality-1)
+  - [Album art quality](#album-art-quality-1)
+  - [Download](#download)
+  - [Library maintenance](#library-maintenance)
+  - [Reset](#reset)
 - [Mouse & keyboard shortcuts](#mouse--keyboard-shortcuts)
 - [Troubleshooting](#troubleshooting)
 
@@ -37,9 +44,7 @@ Tidal serves audio in two manifest formats:
 | **HiFi** (LOSSLESS) | BTS (single URL) | 16-bit / 44.1 kHz FLAC, downloaded as one file. |
 | **High** | BTS (single URL) | AAC. Skipped automatically if you ask for LOSSLESS or higher. |
 
-**Playback** is always LOSSLESS (16-bit / 44.1 kHz) for snappy start times — the app skips the DASH manifest path during preview to avoid segment-assembly delay.
-
-**Download** uses whatever you set in **Settings → Audio Quality** (Max / HiFi / High).
+**Settings → Audio quality** controls both playback and download. Max takes ~1–3 s on first play because the app assembles DASH segments before sending to ffmpeg; HiFi plays instantly when Tidal serves it as 16-bit FLAC. If Tidal silently downgrades a HiFi request to AAC (a known server-side behavior on some accounts), the app falls back to AAC.
 
 If a track isn't available at your requested quality, the app falls back gracefully and only saves real FLAC — never a re-encoded AAC pretending to be lossless.
 
@@ -148,26 +153,66 @@ Exclusive mode requires an app restart to take full effect (Electron's `commandL
 
 ## Settings reference
 
-| Section | Item | What it does |
-|---------|------|--------------|
-| Tidal | Login / Logout | Device-code OAuth flow, refresh token preserved across launches |
-| Playback | Exclusive Audio | Gate-level toggle; restart required after change |
-| Audio Quality | Max / HiFi / High | Used by **download**, not preview playback |
-| Album art quality | High / Standard / Low | Embed resolution + lightbox source |
-| Album art hover tilt | On / Off | Per-card 3D tilt across Library / Search / Tag Editor |
-| Download location | Folder picker | First time setting also initializes art folder to `<downloadPath>/art` |
-| Album art download location | Folder picker | Override the audio path for art-only downloads |
-| Folder Structure | Chip builder | E.g. `[albumArtist] / [album]` — affects new downloads only |
-| File Naming | Chip builder | E.g. `[trackNumber] - [title]` |
-| Reset → Reset download history | 2-step confirm | Clears `.tidal-library.json`; files stay on disk, ✓ marks reset |
-| Reset → Clear all favorites | 2-step confirm | Empties favorites file |
-| Reset → Clear image cache | 2-step confirm | Wipes Chromium HTTP cache (fix for stale album art / artist profile) |
+The Settings page groups options by purpose. Each section is described below.
+
+### Account
+
+- **Tidal** — Sign in or sign out via Tidal's OAuth Device Code flow. When signed in, the current account is shown. The browser opens automatically with your one-time code on each new login.
+- **Auto-refresh** — When on, the app silently refreshes your Tidal access token in the background (every five minutes by default). Keep this on so you don't get logged out across launches; the `refresh_token` is preserved even when Tidal omits it from the response.
+
+### Playback
+
+- **Background playback & tray** — When on, closing the main window minimizes the app to the system tray instead of quitting. Right-click the tray icon to **Show TIDAL DOWNLOADER** or quit. Use this if you want the app to keep playing music while it's out of the way.
+
+### Audio quality
+
+This section sets the requested audio tier for **both playback and downloads**. The detailed timing characteristics are described in the [Audio quality](#audio-quality) section above.
+
+- **Max** — 24-bit HiRes (DASH, remuxed to standard FLAC).
+- **HiFi** — 16-bit / 44.1 kHz FLAC (BTS, single URL).
+- **High** — AAC.
+
+#### Check available quality
+
+Runs a quick probe against Tidal to see which tiers actually return lossless audio for your account right now. The app fetches two short sample tracks (one from your library, one a global hit) at each tier and reports whether Tidal delivered FLAC or AAC. Use this when your downloads come out as AAC despite a HiFi / HiFi Plus subscription — it lets you tell whether the issue is the subscription tier itself or Tidal's server-side silent downgrade.
+
+### Album art quality
+
+Resolution of the album art embedded into downloaded files and shown in the lightbox. Falls back to the next smaller size automatically if Tidal doesn't have the requested resolution for an album.
+
+- **High** — 1280 × 1280 (best, larger file)
+- **Standard** — 640 × 640 (good balance)
+- **Low** — 320 × 320 (small)
+
+- **Album art hover tilt** — When on, album cards smoothly tilt toward the mouse cursor (3D parallax) across the Library, Search, and Tag Editor pages. Toggle off if you find it distracting; cards remain static.
+
+### Download
+
+- **Download location** — Root folder for downloaded audio. Setting this for the first time also initializes the album-art folder to `<downloadPath>/art`.
+- **Album art download location** — Separate folder for full-resolution art saved from the lightbox. If unset, the lightbox download falls back to the audio folder.
+- **Folder structure** — A chip-based builder that defines the subfolder tree under your download location. Click a tag to append (**Album Artist** / **Artist** / **Album** / **Genre** / **Year**), ✕ on the right to remove the last one. The live preview shows what the path will look like with sample data. Affects new downloads only; to re-apply your current rules to existing files, use **Library maintenance → Resync from TIDAL**.
+- **File naming** — Same chip builder for the file name itself. Tags: **Album Artist**, **Artist**, **Track #**, **-** (separator), **Title**. The `.flac` extension is appended automatically.
+
+### Library maintenance
+
+Actions for keeping your downloaded library tidy. None of them delete audio files.
+
+- **Resync from TIDAL (online)** — Re-fetches every downloaded track's metadata from Tidal and reapplies your current Folder structure + File naming rules. Tags and embedded album art are also refreshed. Requires internet. Use after changing your folder/naming pattern so the existing library matches.
+- **Rebuild from FLAC (offline)** — Reads the `TIDAL_GUID` / `TIDAL_META` Vorbis comments that the app embeds into every downloaded FLAC and rebuilds the library index from them. No network required. Use this after moving files between drives, recovering from a corrupted `.tidal-library.json`, or transferring your library to another machine.
+
+### Reset
+
+Clear cached state without touching your audio files.
+
+- **Reset library data** — Clears your favorites list and the Chromium HTTP cache (which holds Tidal CDN images) in one step. Use this when favorites need a fresh start or when artist profile photos / album art appear stale. Two-step confirmation: the first click turns the button red and waits up to 5 seconds for a second click to actually run.
+- **Reset current settings** — Restores all Settings values to their defaults. Same two-step confirmation. Your downloaded files, library index, and Tidal token are not touched.
 
 ## Mouse & keyboard shortcuts
 
 - **Mouse thumb buttons (XButton1 / XButton2)** — app-wide back / forward, including across pages (Library album detail ↔ Library grid, Search album ↔ artist page, Tag Editor album detail ↔ grid).
 - **Sidebar re-click on the current page** — resets that page (Search → home; Library → list/grid root; Tag Editor → grid root). Clicking a different page tab navigates without resetting state.
 - **Search bar Enter** — switches to the full results grid (from the dropdown overlay).
+- **Spacebar** — play / pause (when no input field is focused).
 - **Esc / background click** — closes most modals (lightbox, Audio Device settings, etc.).
 
 ## Troubleshooting
