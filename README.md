@@ -1,4 +1,4 @@
-# Tidal Downloader
+# TIDAL DOWNLOADER
 
 A high-fidelity desktop client for Tidal that downloads, plays, and organizes lossless music. Built with Electron + React.
 
@@ -30,22 +30,22 @@ Latest release: **v1.0.2** — see [Releases](../../releases/latest).
 
 | Platform | File | Size |
 |----------|------|------|
-| Windows 10/11 (x64) | `Tidal Downloader Setup 1.0.2.exe` | ~118 MB |
-| macOS Intel (x64) | `Tidal Downloader-1.0.2.dmg` | ~200 MB |
-| macOS Apple Silicon (arm64) | `Tidal Downloader-1.0.2-arm64.dmg` | ~200 MB |
+| Windows 10/11 (x64) | `TIDAL DOWNLOADER Setup 1.0.2.exe` | ~118 MB |
+| macOS Intel (x64) | `TIDAL DOWNLOADER-1.0.2.dmg` | ~200 MB |
+| macOS Apple Silicon (arm64) | `TIDAL DOWNLOADER-1.0.2-arm64.dmg` | ~200 MB |
 
 ## Installation
 
 ### Windows
-1. Download `Tidal Downloader Setup 1.0.2.exe` from the latest release.
+1. Download `TIDAL DOWNLOADER Setup 1.0.2.exe` from the latest release.
 2. Run the installer — it is signed by **ARCLIGHTSTRVL** (Authenticode), so SmartScreen should not flag it.
 3. Follow the wizard. Per-user install, no admin required.
 
 ### macOS
 1. Download the `.dmg` matching your CPU (Intel or Apple Silicon).
-2. Mount it and drag *Tidal Downloader* into `/Applications`.
+2. Mount it and drag *TIDAL DOWNLOADER* into `/Applications`.
 3. First launch: right-click → **Open** to bypass the unidentified-developer warning (current builds are unsigned).
-4. Optionally clear the quarantine flag: `xattr -cr "/Applications/Tidal Downloader.app"`.
+4. Optionally clear the quarantine flag: `xattr -cr "/Applications/TIDAL DOWNLOADER.app"`.
 
 ## Requirements
 
@@ -79,7 +79,7 @@ When reporting a bug, please include:
 - Console output if reproducible — on Windows, launch from PowerShell with:
   ```powershell
   $env:ELECTRON_ENABLE_LOGGING=1
-  & "$env:LOCALAPPDATA\Programs\tidal-downloader\Tidal Downloader.exe"
+  & "$env:LOCALAPPDATA\Programs\tidal-downloader\TIDAL DOWNLOADER.exe"
   ```
 
 ## Disclaimer

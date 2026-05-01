@@ -1,4 +1,4 @@
-# Tidal Downloader — User Guide
+# TIDAL DOWNLOADER — User Guide
 
 This guide covers everything you need to use the app day-to-day. For installation see the [README](../README.md).
 

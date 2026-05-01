@@ -29,7 +29,7 @@ assignees: ''
 On Windows, launch from PowerShell with logging:
 
   $env:ELECTRON_ENABLE_LOGGING=1
-  & "$env:LOCALAPPDATA\Programs\tidal-downloader\Tidal Downloader.exe"
+  & "$env:LOCALAPPDATA\Programs\TIDAL DOWNLOADER\TIDAL DOWNLOADER.exe"
 
 Then paste the relevant lines (especially anything starting with [NATIVE PLAYER] or [LIBRARY]).
 -->

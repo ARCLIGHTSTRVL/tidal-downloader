@@ -1,8 +1,11 @@
 # Changelog
 
-All notable user-visible changes to Tidal Downloader.
+All notable user-visible changes to TIDAL DOWNLOADER.
 
 ## v1.0.2 — 2026-05-01
+
+### Branding
+- App name standardized to **TIDAL DOWNLOADER** (uppercase) across the installer, Start menu / shortcut, system tray, splash screen, and DMG title — matching the in-app titlebar and Settings footer that already used the uppercase styling. Existing user data (settings, favorites, Tidal token) is preserved automatically. On Windows, you may want to remove the old "Tidal Downloader" entry from Add/Remove Programs before installing the new build, since NSIS treats different product names as separate entries.
 
 ### New
 - **Bit-perfect WASAPI exclusive output** (Windows). The app can now grab the audio device exclusively and output at the source's native sample rate / bit depth (16/44.1, 24/96, 24/192) without the OS audio engine in the path.
