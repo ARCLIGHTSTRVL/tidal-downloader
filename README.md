@@ -98,6 +98,12 @@ Copyright © 2026 **ARCLIGHTSTRVL**. All rights reserved.
 
 The compiled application is provided as-is for personal use. Source code is not publicly available. See [LICENSE](LICENSE) for the full terms.
 
+## Support
+
+If you find TIDAL DOWNLOADER useful, you can support development on [Ko-fi](https://ko-fi.com/arclights). Every contribution helps keep the project maintained — thank you.
+
+[![Ko-fi](https://img.shields.io/badge/Support_on-Ko--fi-FF5E5B?style=flat-square&logo=ko-fi&logoColor=white)](https://ko-fi.com/arclights)
+
 ---
 
 Built by **ARCLIGHTSTRVL**.
