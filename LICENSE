@@ -1,0 +1,78 @@
+Tidal Downloader — End-User License Agreement
+Copyright (c) 2026 ARCLIGHTSTRVL. All rights reserved.
+
+This End-User License Agreement ("Agreement") governs your use of the
+Tidal Downloader application ("Software") distributed in compiled binary
+form by ARCLIGHTSTRVL ("Author"). By installing or using the Software,
+you ("You") agree to the terms below. If You do not agree, do not
+install or use the Software.
+
+1. Grant of License
+   The Author grants You a personal, non-exclusive, non-transferable,
+   royalty-free license to install and run the Software on devices that
+   You own or control, solely for non-commercial personal use.
+
+2. Restrictions
+   You may not, and may not permit any third party to:
+     (a) redistribute, sell, sublicense, rent, lease, or lend the
+         Software, in whole or in part;
+     (b) reverse-engineer, decompile, disassemble, or attempt to derive
+         the source code of the Software, except where such activity is
+         expressly permitted by applicable law notwithstanding this
+         restriction;
+     (c) modify, adapt, or create derivative works based on the
+         Software;
+     (d) remove, alter, or obscure any copyright, trademark, or other
+         proprietary notices contained in the Software;
+     (e) use the Software in any manner that violates the terms of
+         service of Tidal (Aspiro AB) or any other third-party service
+         the Software interacts with.
+
+3. Third-Party Components
+   The Software bundles or interacts with third-party components,
+   including but not limited to ffmpeg (LGPL-2.1-or-later) via the
+   "ffmpeg-static" package, "node-taglib-sharp", and Electron. These
+   components remain subject to their own licenses; nothing in this
+   Agreement is intended to restrict rights granted under those
+   licenses with respect to those components.
+
+4. No Affiliation with Tidal
+   The Software is an independent, third-party tool. It is not
+   affiliated with, sponsored by, or endorsed by Tidal or Aspiro AB.
+   You are solely responsible for ensuring that Your use of the
+   Software complies with Tidal's Terms of Service and any applicable
+   laws.
+
+5. No Warranty
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND
+   NON-INFRINGEMENT. THE AUTHOR DOES NOT WARRANT THAT THE SOFTWARE WILL
+   BE UNINTERRUPTED, ERROR-FREE, OR FREE FROM HARMFUL COMPONENTS.
+
+6. Limitation of Liability
+   TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL
+   THE AUTHOR BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL,
+   CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR FOR ANY LOSS OF PROFITS,
+   REVENUE, DATA, OR USE, ARISING OUT OF OR IN CONNECTION WITH YOUR USE
+   OF THE SOFTWARE, EVEN IF THE AUTHOR HAS BEEN ADVISED OF THE
+   POSSIBILITY OF SUCH DAMAGES.
+
+7. Termination
+   This Agreement is effective until terminated. It will terminate
+   automatically without notice if You fail to comply with any of its
+   terms. Upon termination, You must cease all use of the Software and
+   destroy all copies in Your possession or control.
+
+8. Governing Law
+   This Agreement is governed by and construed in accordance with the
+   laws applicable in the jurisdiction in which the Author resides,
+   without regard to its conflict-of-laws principles.
+
+9. Entire Agreement
+   This Agreement constitutes the entire agreement between You and the
+   Author regarding the Software and supersedes any prior or
+   contemporaneous understandings.
+
+For questions about this Agreement, please open an issue at the project
+repository: https://github.com/ARCLIGHTSTRVL/tidal-downloader/issues
