@@ -1,0 +1,13 @@
+# Release notes scratch — kept locally per release, not committed
+.release-notes-*
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo

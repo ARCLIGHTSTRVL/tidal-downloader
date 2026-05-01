@@ -2,6 +2,11 @@
 
 A high-fidelity desktop client for Tidal that downloads, plays, and organizes lossless music. Built with Electron + React.
 
+[![Release](https://img.shields.io/github/v/release/ARCLIGHTSTRVL/tidal-downloader?style=flat-square)](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/ARCLIGHTSTRVL/tidal-downloader/total?style=flat-square)](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases)
+[![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS-lightgrey?style=flat-square)]()
+[![License](https://img.shields.io/badge/license-Proprietary-blue?style=flat-square)](LICENSE)
+
 > **Status:** v1.0.2 — stable on Windows. macOS build available unsigned.
 
 ---
