@@ -4,8 +4,7 @@
 
 # TIDAL DOWNLOADER
 
-A high-fidelity desktop client for Tidal that downloads FLAC, plays, and organizes lossless music.
-Built with Electron + React.
+A high-fidelity desktop client for Tidal that downloads FLAC, plays, and organizes lossless music.<br>Built with Electron + React.
 
 [![Release](https://img.shields.io/github/v/release/ARCLIGHTSTRVL/tidal-downloader?style=flat-square)](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/ARCLIGHTSTRVL/tidal-downloader/total?style=flat-square)](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases)
