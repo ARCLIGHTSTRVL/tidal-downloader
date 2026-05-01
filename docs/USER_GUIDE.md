@@ -9,6 +9,7 @@ This guide covers everything you need to use the app day-to-day. For installatio
 - [Search & discovery](#search--discovery)
 - [Downloading](#downloading)
 - [Library](#library)
+- [Downloads page](#downloads-page)
 - [Tag editor](#tag-editor)
 - [Player bar](#player-bar)
 - [Audio device picker (Windows)](#audio-device-picker-windows)
@@ -44,9 +45,19 @@ Tidal serves audio in two manifest formats:
 | **HiFi** (LOSSLESS) | BTS (single URL) | 16-bit / 44.1 kHz FLAC, downloaded as one file. |
 | **High** | BTS (single URL) | AAC. Skipped automatically if you ask for LOSSLESS or higher. |
 
-**Settings → Audio quality** controls both playback and download. Max takes ~1–3 s on first play because the app assembles DASH segments before sending to ffmpeg; HiFi plays instantly when Tidal serves it as 16-bit FLAC. If Tidal silently downgrades a HiFi request to AAC (a known server-side behavior on some accounts), the app falls back to AAC.
+**Settings → Audio quality** controls both playback and download. Max takes ~1–3 s on first play because the app assembles DASH segments before sending to ffmpeg; HiFi plays instantly when Tidal serves it as 16-bit FLAC.
 
-If a track isn't available at your requested quality, the app falls back gracefully and only saves real FLAC — never a re-encoded AAC pretending to be lossless.
+### Quality fallback when a track isn't available at the requested tier
+
+Tidal does not always deliver the tier you asked for. The app handles this by stepping down through the lossless ladder:
+
+- **Max requested → HI_RES_LOSSLESS / HI_RES delivered**: 24-bit FLAC at the album's native sample rate. ✅
+- **Max requested → only LOSSLESS delivered**: the file is saved as 16-bit / 44.1 kHz FLAC (HiFi tier). The download still goes through, but at the lower native bit depth that Tidal made available. This is a real, lossless FLAC — just not 24-bit.
+- **HiFi requested → only LOSSLESS delivered**: 16-bit FLAC, exactly as expected.
+- **Either tier requested → only AAC available**: the app **does not save** an AAC pretending to be lossless. The track is skipped; only real FLAC reaches your library. (The library "✓" mark also won't appear, so you can re-attempt later from a different account or after a Tidal-side fix.)
+- **High requested**: AAC is what you asked for; saved directly.
+
+In short, you can't get a worse-than-FLAC file from a HiFi/Max download, but you may get FLAC at a lower bit depth than you wanted (silent downgrade by Tidal). Use **Settings → Check available quality** to find out in advance which tiers your account can actually fetch lossless audio at.
 
 ## Album art quality
 
@@ -101,6 +112,18 @@ The **Refresh** button (top-right) re-scans, then prompts you to delete any *tru
 The **Remux** button performs a one-shot conversion of any DASH-wrapped FLAC files in your library into standard FLAC (with tags + album art embedded). Useful for legacy downloads from earlier app versions.
 
 You can play any local file by clicking it — the app uses a custom `local://` protocol that preserves the native bit depth and embedded album art.
+
+## Downloads page
+
+The **Downloads** tab in the sidebar (between **Tag Editor** and **Settings**) shows download activity at a glance.
+
+- **In progress** — currently-downloading tracks with their album art, title, and a real-time progress bar.
+- **Completed / failed** — finished history with a status icon (✓ for success, ✗ for failure with the reason on hover).
+- **Click a row** — plays that track from Tidal (uses the streaming path, not the local file).
+- **✕ on a row** — removes that entry from the list (the actual file on disk is **not** deleted).
+- **Clear All** — wipes the entire history list.
+
+The list is in-memory only — closing the app clears it. Persistent records of which tracks you have downloaded live in the library index (`<downloadFolder>/.tidal-library.json`), which is what powers the ✓ marks in Search and the Library tab.
 
 ## Tag editor
 
@@ -174,7 +197,9 @@ This section sets the requested audio tier for **both playback and downloads**. 
 
 #### Check available quality
 
-Runs a quick probe against Tidal to see which tiers actually return lossless audio for your account right now. The app fetches two short sample tracks (one from your library, one a global hit) at each tier and reports whether Tidal delivered FLAC or AAC. Use this when your downloads come out as AAC despite a HiFi / HiFi Plus subscription — it lets you tell whether the issue is the subscription tier itself or Tidal's server-side silent downgrade.
+Runs a quick probe against Tidal to see which tiers actually return lossless audio for your account right now. The app fetches two short sample tracks (one from your library, one a global hit) at each tier and reports whether Tidal delivered FLAC or AAC.
+
+This is the diagnostic counterpart to the [quality fallback](#quality-fallback-when-a-track-isnt-available-at-the-requested-tier) above. If a tier comes back as AAC in the probe, downloads at that tier will be **skipped** (the app refuses to save AAC pretending to be lossless). If a tier comes back as 16-bit FLAC when you asked for Max, downloads at that tier will save successfully but **silently downgraded** to 16 bit. Either way, knowing in advance lets you decide whether to lower the Audio quality setting (for fewer skips) or contact Tidal about your subscription state.
 
 ### Album art quality
 
