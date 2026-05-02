@@ -25,6 +25,10 @@ A high-fidelity desktop client for Tidal — download lossless **FLAC** (16-bit 
     <td><img src="docs/images/discography.png" alt="Artist discography" /></td>
   </tr>
   <tr>
+    <td><img src="docs/images/search.png" alt="Search results" /></td>
+    <td><img src="docs/images/album-info.png" alt="Album metadata detail" /></td>
+  </tr>
+  <tr>
     <td><img src="docs/images/album-art.png" alt="Full-resolution album art" /></td>
     <td><img src="docs/images/tag-editor.png" alt="Bulk tag editor" /></td>
   </tr>
