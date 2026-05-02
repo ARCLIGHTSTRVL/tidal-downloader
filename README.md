@@ -17,13 +17,26 @@ A high-fidelity desktop client for Tidal — download lossless **FLAC** (16-bit 
 
 ---
 
-## Why TIDAL DOWNLOADER?
+## Screenshots
 
-- **Real lossless** — saves the actual FLAC stream from Tidal (no re-encode, no MP4 wrapper). Hi-Res tracks land as 24-bit / 96-192 kHz.
-- **Bit-perfect playback (Windows)** — WASAPI exclusive mode with native sample-rate match: the DAC sees exactly what the file holds.
-- **Library + player + tag editor in one** — no juggling foobar2000 / Mp3tag / a separate downloader.
-- **Self-contained** — no server, no Python, no manual ffmpeg install. Signed installer (Authenticode, SmartScreen-clean) on Windows.
-- **Open by design** — every FLAC carries `TIDAL_GUID` + `TIDAL_META` Vorbis tags so you can rebuild the library offline from your files alone.
+<table>
+  <tr>
+    <td><img src="docs/images/library.png" alt="Library grid view" /></td>
+    <td><img src="docs/images/discography.png" alt="Artist discography" /></td>
+  </tr>
+  <tr>
+    <td><img src="docs/images/album-art.png" alt="Full-resolution album art" /></td>
+    <td><img src="docs/images/tag-editor.png" alt="Bulk tag editor" /></td>
+  </tr>
+</table>
+
+## How it works
+
+- Tidal FLAC streams are saved as standard FLAC — no re-encode, no MP4 wrapper. HI_RES_LOSSLESS tracks come through as 24-bit at 96 or 192 kHz.
+- DASH manifests (used for HI_RES_LOSSLESS) are reassembled and remuxed losslessly via ffmpeg (`-c:a copy`).
+- On Windows, playback uses WASAPI exclusive mode with sample-rate matching for bit-perfect output to the DAC.
+- Each saved FLAC embeds `TIDAL_GUID` and `TIDAL_META` Vorbis tags; the library index can be rebuilt offline from these tags alone.
+- The Windows installer is Authenticode-signed by ARCLIGHTSTRVL.
 
 ## Features
 
