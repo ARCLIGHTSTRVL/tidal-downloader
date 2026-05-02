@@ -4,7 +4,7 @@
 
 # TIDAL DOWNLOADER
 
-A high-fidelity desktop client for Tidal that downloads FLAC, plays, and organizes lossless music.<br>Built with Electron + React.
+A high-fidelity desktop client for Tidal — download lossless **FLAC** (16-bit / 24-bit up to 192 kHz HI_RES_LOSSLESS), play **bit-perfect** via WASAPI exclusive mode, organize your library, and edit tags in bulk.<br>Built with Electron + React for Windows and macOS.
 
 [![Release](https://img.shields.io/github/v/release/ARCLIGHTSTRVL/tidal-downloader?style=flat-square)](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/ARCLIGHTSTRVL/tidal-downloader/total?style=flat-square)](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases)
@@ -16,6 +16,14 @@ A high-fidelity desktop client for Tidal that downloads FLAC, plays, and organiz
 > **Status:** v1.0.2 — stable on Windows. macOS build available unsigned.
 
 ---
+
+## Why TIDAL DOWNLOADER?
+
+- **Real lossless** — saves the actual FLAC stream from Tidal (no re-encode, no MP4 wrapper). Hi-Res tracks land as 24-bit / 96-192 kHz.
+- **Bit-perfect playback (Windows)** — WASAPI exclusive mode with native sample-rate match: the DAC sees exactly what the file holds.
+- **Library + player + tag editor in one** — no juggling foobar2000 / Mp3tag / a separate downloader.
+- **Self-contained** — no server, no Python, no manual ffmpeg install. Signed installer (Authenticode, SmartScreen-clean) on Windows.
+- **Open by design** — every FLAC carries `TIDAL_GUID` + `TIDAL_META` Vorbis tags so you can rebuild the library offline from your files alone.
 
 ## Features
 
