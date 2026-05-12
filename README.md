@@ -69,7 +69,7 @@ See [Releases](../../releases/tag/v1.0.2).
 
 ### Beta — v1.0.2-beta (macOS only)
 
-> ⚠️ **베타 버전은 모든 기능이 전부 정상적으로 동작하지 않을 수 있습니다.** This is an early macOS preview — expect rough edges, especially around exclusive-mode device negotiation. Report issues so they can be fixed before v1.0.3 stable.
+> ⚠️ **Beta — not all features are guaranteed to work correctly.** This is an early macOS preview; expect rough edges, especially around exclusive-mode device negotiation. Please report issues so they can be fixed before v1.0.3 stable.
 
 First macOS build with Core Audio Hog Mode (bit-perfect exclusive output) and the macOS-first UX pass. Code paths shared with Windows (parallel album downloads, library refresh debounce) ship with v1.0.3 on both platforms — this beta is the macOS preview track. See [Releases v1.0.2-beta](../../releases/tag/v1.0.2-beta).
 
