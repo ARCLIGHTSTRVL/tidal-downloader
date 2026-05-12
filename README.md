@@ -13,7 +13,7 @@ A high-fidelity desktop client for Tidal — download lossless **FLAC** (16-bit 
 
 </div>
 
-> **Status:** v1.0.2 — stable on Windows. macOS build available unsigned.
+> **Status:** v1.0.2 — stable on Windows. macOS **v1.0.2-beta** available for testing — Core Audio Hog Mode (bit-perfect exclusive output), native traffic-light layout, parallel album downloads. Feedback welcome on [Issues](../../issues).
 
 ---
 
@@ -46,7 +46,7 @@ A high-fidelity desktop client for Tidal — download lossless **FLAC** (16-bit 
 
 - **Lossless streaming & download** — FLAC at native sample rate, no transcoding for HiFi/Max tiers
 - **Max-quality DASH support** — segment assembly + ffmpeg remux for HI_RES_LOSSLESS (24-bit / 96 kHz / 192 kHz)
-- **Bit-perfect output (Windows)** — true WASAPI exclusive mode with native sample-rate negotiation, force-volume option
+- **Bit-perfect output** — Windows: WASAPI exclusive mode with native sample-rate negotiation, force-volume option. macOS (beta): Core Audio Hog Mode with nominal sample-rate matching
 - **Library** — auto-scanned `Artist > Album` tree with list and grid views, library-wide playback, current-track highlight
 - **Tag editor** — bulk album-level edits, embedded album art, drag-drop file/folder import, multi-root refresh
 - **Search & discovery** — artist/album search with discography (Albums / EP & Singles), favorites, recent history sections
@@ -59,13 +59,24 @@ A high-fidelity desktop client for Tidal — download lossless **FLAC** (16-bit 
 
 ## Download
 
-Latest release: **v1.0.2** — see [Releases](../../releases/latest).
+### Stable — v1.0.2 (Windows)
+
+See [Releases](../../releases/tag/v1.0.2).
 
 | Platform | File | Size |
 |----------|------|------|
 | Windows 10/11 (x64) | `TIDAL DOWNLOADER Setup 1.0.2.exe` | ~118 MB |
-| macOS Intel (x64) | `TIDAL DOWNLOADER-1.0.2.dmg` | ~200 MB |
-| macOS Apple Silicon (arm64) | `TIDAL DOWNLOADER-1.0.2-arm64.dmg` | ~200 MB |
+
+### Beta — v1.0.2-beta (macOS only)
+
+First macOS build with Core Audio Hog Mode (bit-perfect exclusive output) and the macOS-first UX pass. Code paths shared with Windows (parallel album downloads, library refresh debounce) ship with v1.0.3 on both platforms — this beta is the macOS preview track. See [Releases v1.0.2-beta](../../releases/tag/v1.0.2-beta).
+
+| Platform | File | Size |
+|----------|------|------|
+| macOS Apple Silicon (arm64) | `TIDAL DOWNLOADER-1.0.2-beta-arm64.dmg` | ~128 MB |
+| macOS Intel (x64) | `TIDAL DOWNLOADER-1.0.2-beta.dmg` | ~134 MB |
+
+> Beta DMGs are **unsigned** (ad-hoc) — Apple Developer notarization is on the roadmap. See macOS install steps below for the right-click → Open workaround.
 
 ## Installation
 
@@ -74,11 +85,11 @@ Latest release: **v1.0.2** — see [Releases](../../releases/latest).
 2. Run the installer — it is signed by **ARCLIGHTSTRVL** (Authenticode), so SmartScreen should not flag it.
 3. Follow the wizard. Per-user install, no admin required.
 
-### macOS
-1. Download the `.dmg` matching your CPU (Intel or Apple Silicon).
+### macOS (v1.0.2-beta)
+1. Download the `.dmg` matching your CPU (Apple Silicon `arm64` or Intel `x64`).
 2. Mount it and drag *TIDAL DOWNLOADER* into `/Applications`.
-3. First launch: right-click → **Open** to bypass the unidentified-developer warning (current builds are unsigned).
-4. Optionally clear the quarantine flag: `xattr -cr "/Applications/TIDAL DOWNLOADER.app"`.
+3. First launch: right-click → **Open** to bypass the unidentified-developer warning (beta builds are unsigned).
+4. Or clear the quarantine flag from Terminal: `xattr -cr "/Applications/TIDAL DOWNLOADER.app"`.
 
 ## Requirements
 
