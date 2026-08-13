@@ -27,24 +27,24 @@ A high-fidelity desktop client for Tidal — download lossless **FLAC** (16-bit 
     <td><img src="docs/images/library-list.png" alt="Library list view with per-track quality (FLAC 96 kHz / 24-bit)" /></td>
   </tr>
   <tr>
-    <td><img src="docs/images/search.png" alt="Search results — albums, playlists, and tracks" /></td>
     <td><img src="docs/images/search-home.png" alt="Search home with library stats and favorites" /></td>
+    <td><img src="docs/images/search.png" alt="Search results — albums, playlists, and tracks" /></td>
   </tr>
   <tr>
     <td><img src="docs/images/album-download.png" alt="Album download in progress — three tracks in parallel" /></td>
+    <td><img src="docs/images/downloads.png" alt="Downloads panel — active progress and completed tracks" /></td>
+  </tr>
+  <tr>
     <td><img src="docs/images/now-playing.png" alt="Now Playing view with ambient album backdrop" /></td>
-  </tr>
-  <tr>
     <td><img src="docs/images/album-info.png" alt="Album info overlay with Tidal metadata and track list" /></td>
+  </tr>
+  <tr>
     <td><img src="docs/images/album-art.png" alt="Full-resolution album art lightbox" /></td>
-  </tr>
-  <tr>
     <td><img src="docs/images/tag-editor.png" alt="Bulk tag editor with file info" /></td>
-    <td><img src="docs/images/exclusive-mode.png" alt="Per-device exclusive mode (bit-perfect) options" /></td>
   </tr>
   <tr>
+    <td><img src="docs/images/exclusive-mode.png" alt="Per-device exclusive mode (bit-perfect) options" /></td>
     <td><img src="docs/images/settings-korean.png" alt="Settings in Korean (English/한국어 UI)" /></td>
-    <td></td>
   </tr>
 </table>
 
