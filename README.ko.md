@@ -32,18 +32,18 @@ Tidal을 위한 고음질 데스크톱 클라이언트 — 무손실 **FLAC** �
   </tr>
   <tr>
     <td><img src="docs/images/album-download.png" alt="앨범 다운로드 진행 — 트랙 3개 동시" /></td>
-    <td><img src="docs/images/downloads.png" alt="다운로드 패널 — 진행률과 완료 목록" /></td>
+    <td><img src="docs/images/album-art.png" alt="원본 해상도 앨범 아트 라이트박스" /></td>
   </tr>
   <tr>
     <td><img src="docs/images/now-playing.png" alt="재생 화면 — 앨범 배경 앰비언트" /></td>
     <td><img src="docs/images/album-info.png" alt="앨범 정보 오버레이 — Tidal 메타데이터와 트랙 목록" /></td>
   </tr>
   <tr>
-    <td><img src="docs/images/album-art.png" alt="원본 해상도 앨범 아트 라이트박스" /></td>
+    <td><img src="docs/images/exclusive-mode.png" alt="장치별 배타 모드(비트퍼펙트) 옵션" /></td>
     <td><img src="docs/images/tag-editor.png" alt="일괄 태그 편집기와 파일 정보" /></td>
   </tr>
   <tr>
-    <td><img src="docs/images/exclusive-mode.png" alt="장치별 배타 모드(비트퍼펙트) 옵션" /></td>
+    <td><img src="docs/images/downloads.png" alt="다운로드 패널 — 진행률과 완료 목록" /></td>
     <td><img src="docs/images/settings-korean.png" alt="한국어 설정 화면 (English/한국어 UI)" /></td>
   </tr>
 </table>

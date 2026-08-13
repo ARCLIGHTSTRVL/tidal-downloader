@@ -32,18 +32,18 @@ A high-fidelity desktop client for Tidal — download lossless **FLAC** (16-bit 
   </tr>
   <tr>
     <td><img src="docs/images/album-download.png" alt="Album download in progress — three tracks in parallel" /></td>
-    <td><img src="docs/images/downloads.png" alt="Downloads panel — active progress and completed tracks" /></td>
+    <td><img src="docs/images/album-art.png" alt="Full-resolution album art lightbox" /></td>
   </tr>
   <tr>
     <td><img src="docs/images/now-playing.png" alt="Now Playing view with ambient album backdrop" /></td>
     <td><img src="docs/images/album-info.png" alt="Album info overlay with Tidal metadata and track list" /></td>
   </tr>
   <tr>
-    <td><img src="docs/images/album-art.png" alt="Full-resolution album art lightbox" /></td>
+    <td><img src="docs/images/exclusive-mode.png" alt="Per-device exclusive mode (bit-perfect) options" /></td>
     <td><img src="docs/images/tag-editor.png" alt="Bulk tag editor with file info" /></td>
   </tr>
   <tr>
-    <td><img src="docs/images/exclusive-mode.png" alt="Per-device exclusive mode (bit-perfect) options" /></td>
+    <td><img src="docs/images/downloads.png" alt="Downloads panel — active progress and completed tracks" /></td>
     <td><img src="docs/images/settings-korean.png" alt="Settings in Korean (English/한국어 UI)" /></td>
   </tr>
 </table>
