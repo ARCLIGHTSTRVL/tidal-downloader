@@ -67,7 +67,7 @@ Tidal을 위한 고음질 데스크톱 클라이언트 — 무손실 **FLAC** �
 
 ## 기능
 
-- **무손실 스트리밍 & 다운로드** — 네이티브 샘플레이트의 FLAC, HiFi/Max 티어 무변환
+- **Tidal의 모든 음질 지원** — Max(HI_RES_LOSSLESS 24비트 최대 192 kHz FLAC), HiFi(16/44.1 FLAC), High(AAC 320 kbps, 정식 `.m4a`) — 전부 동일한 정체성 내장·라이브러리 기능 지원, 재인코딩 없음
 - **최고 음질 DASH 지원** — HI_RES_LOSSLESS(24비트 / 96 kHz / 192 kHz) 세그먼트 조립 + ffmpeg remux
 - **플레이리스트** — Tidal 플레이리스트 탐색(검색 결과, 내 플레이리스트+즐겨찾기, 최근 열람), 링크나 UUID를 붙여넣어 바로 열기, `playlists/<이름>/` 전용 폴더로 일괄 다운로드(플레이리스트 순번 파일명 + 커버 아트), 라이브러리의 전용 그룹으로 관리
 - **비트퍼펙트 출력** — Windows: WASAPI 배타 모드 + 네이티브 샘플레이트 협상 + 볼륨 고정 옵션. macOS: Core Audio Hog Mode + 노미널 샘플레이트 매칭
@@ -127,7 +127,7 @@ Tidal을 위한 고음질 데스크톱 클라이언트 — 무손실 **FLAC** �
 
 ## 음질
 
-다운로드는 표준 FLAC으로 저장됩니다(MP4 래퍼 없음). Tidal 매니페스트가 DASH(HI_RES_LOSSLESS)면 세그먼트를 조립해 ffmpeg로 무손실 remux(`-c:a copy`)합니다. 요청한 음질이 제공되지 않는 트랙은 자연스럽게 폴백하되, 진짜 FLAC만 저장합니다 — 재인코딩된 AAC를 FLAC으로 위장해 저장하는 일은 없습니다.
+Max·HiFi 다운로드는 표준 FLAC으로 저장됩니다(MP4 래퍼 없음). Tidal 매니페스트가 DASH(HI_RES_LOSSLESS)면 세그먼트를 조립해 ffmpeg로 무손실 remux(`-c:a copy`)합니다. High 티어는 진짜 AAC 320 kbps를 `.m4a`로 저장합니다. 어떤 경우에도 재인코딩·위장은 없습니다 — 무손실 티어가 제공되지 않는 트랙은 자연스럽게 폴백하며, 재인코딩된 AAC를 FLAC으로 속여 저장하지 않습니다.
 
 오디오 장치 선택기의 **배타 모드 사용**을 켜면 장치를 독점 점유해 음원의 샘플레이트/비트 심도(16/44.1, 24/96, 24/192)에 맞춰 비트퍼펙트로 출력합니다 — Windows는 WASAPI 배타 모드, macOS는 Core Audio Hog Mode.
 

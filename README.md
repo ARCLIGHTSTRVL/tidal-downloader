@@ -67,7 +67,7 @@ What makes this app different from a plain downloader: **every file it saves car
 
 ## Features
 
-- **Lossless streaming & download** — FLAC at native sample rate, no transcoding for HiFi/Max tiers
+- **Every Tidal quality tier** — Max (HI_RES_LOSSLESS 24-bit FLAC up to 192 kHz), HiFi (16/44.1 FLAC), and High (AAC 320 kbps as proper `.m4a`) — all with the same embedded identity and library features, never transcoded
 - **Max-quality DASH support** — segment assembly + ffmpeg remux for HI_RES_LOSSLESS (24-bit / 96 kHz / 192 kHz)
 - **Playlists** — browse Tidal playlists (search results, your own + favorites, recent), open any playlist by pasting its link or UUID, batch-download into a dedicated `playlists/<name>/` folder with playlist track order and cover art, and manage them as a first-class Library group
 - **Bit-perfect output** — Windows: WASAPI exclusive mode with native sample-rate negotiation, force-volume option. macOS: Core Audio Hog Mode with nominal sample-rate matching
@@ -127,7 +127,7 @@ See [Releases](../../releases/latest).
 
 ## Audio quality
 
-Downloads are written as standard FLAC (no MP4 wrapper). When the Tidal manifest is DASH (HI_RES_LOSSLESS), the app assembles segments and remuxes losslessly via ffmpeg (`-c:a copy`). When the requested quality is unavailable for a track, the app falls back gracefully and only saves real FLAC — never a re-encoded AAC.
+Max and HiFi downloads are written as standard FLAC (no MP4 wrapper). When the Tidal manifest is DASH (HI_RES_LOSSLESS), the app assembles segments and remuxes losslessly via ffmpeg (`-c:a copy`). The High tier saves true AAC 320 kbps as `.m4a`. Nothing is ever transcoded or disguised: when a lossless tier is unavailable for a track, the app falls back gracefully and never passes re-encoded AAC off as FLAC.
 
 **Use exclusive mode** in the audio device picker takes hold of the device for bit-perfect output and matches the source sample rate / bit depth (16/44.1, 24/96, 24/192) — via WASAPI exclusive mode on Windows and Core Audio Hog Mode on macOS.
 

@@ -7,6 +7,7 @@ All notable user-visible changes to TIDAL DOWNLOADER.
 ### New
 - **macOS support** — native Apple Silicon and Intel builds with bit-perfect **Core Audio Hog Mode** exclusive output (device hog + nominal sample-rate switching), macOS-native titlebar and menu-bar tray, full library path support. Supersedes `v1.0.2-beta`; the Intel build now ships the correct Intel ffmpeg (the beta's Intel build could not download or convert).
 - **Playlist system** — browse Tidal playlists (search results, your own + favorites, recent), open any playlist by pasting its link or UUID, batch-download into `playlists/<name>/` with playlist track order and cover art, and manage playlists as a dedicated Library group with per-playlist/per-track delete, misplaced-album detection, and duplicate detection.
+- **Every Tidal quality tier supported** — Max (24-bit FLAC up to 192 kHz), HiFi (16/44.1 FLAC), and now High (AAC 320 kbps) saved as proper `.m4a` with the same embedded identity, checkmarks, and offline Rebuild support as FLAC.
 - **Update notifications** (Windows + macOS) — background version checks with a toast linking to the newest release, plus a manual check in Settings.
 - **English / 한국어** — switch the UI language instantly in Settings.
 - **Parallel album downloads** — album tracks download 3 at a time on both platforms.
