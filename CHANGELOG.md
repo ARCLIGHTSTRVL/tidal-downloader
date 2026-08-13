@@ -2,6 +2,29 @@
 
 All notable user-visible changes to TIDAL DOWNLOADER.
 
+## v1.0.3 — 2026-08-14
+
+### New
+- **macOS support** — native Apple Silicon and Intel builds with bit-perfect **Core Audio Hog Mode** exclusive output (device hog + nominal sample-rate switching), macOS-native titlebar and menu-bar tray, full library path support. Supersedes `v1.0.2-beta`; the Intel build now ships the correct Intel ffmpeg (the beta's Intel build could not download or convert).
+- **Playlist system** — browse Tidal playlists (search results, your own + favorites, recent), open any playlist by pasting its link or UUID, batch-download into `playlists/<name>/` with playlist track order and cover art, and manage playlists as a dedicated Library group with per-playlist/per-track delete, misplaced-album detection, and duplicate detection.
+- **Update notifications** (Windows + macOS) — background version checks with a toast linking to the newest release, plus a manual check in Settings.
+- **English / 한국어** — switch the UI language instantly in Settings.
+- **Parallel album downloads** — album tracks download 3 at a time on both platforms.
+- Search home shows library stats; library search matches playlists and their tracks.
+- **Space bar** toggles play/pause while the app is focused (never while typing).
+
+### Improved / Fixed
+- Search navigation is symmetric — back from an album/artist restores your results; clicking a track no longer wipes them.
+- Downloads panel ✕ actually cancels an in-progress download; Clear removes only finished entries.
+- An expired Tidal session shows an error banner instead of pretending there are no results.
+- Player overlay: correct per-track artists, ALBUM INFO follows the current song, the queue follows the current album/playlist, album art can no longer stick to the wrong cover.
+- Library toolbar stays pinned while scrolling; failed deletes show a summary instead of silently vanishing from the UI; unreadable folders show a warning banner instead of masquerading as an empty library.
+- Downloaded-✓ marks are verified by embedded identity instead of file names — retagged or renamed files keep their checkmark, and identity-less files can't inherit one.
+- Settings polish: consistent controls, Reset no longer wipes language/update preferences, hold-to-delete requires a real 1-second hold.
+
+### Reliability
+- Fifty-plus external review rounds across the download pipeline, delete paths, and the library index: atomic per-attempt temp files and publishes (a failed re-download can never damage an existing file), a three-stage integrity gate on every download (magic bytes → parser → real ffmpeg decode), mutual exclusion between downloads and library maintenance, proof-based recursive deletes (no symlink/junction traversal, unverified content is never deleted), atomic index saves, and offline index Rebuild from the identity tags embedded in FLAC and M4A files.
+
 ## v1.0.2 — 2026-05-01
 
 ### Branding

@@ -4,7 +4,9 @@
 
 # TIDAL DOWNLOADER
 
-A high-fidelity desktop client for Tidal — download lossless **FLAC** (16-bit / 24-bit up to 192 kHz HI_RES_LOSSLESS), play **bit-perfect** via WASAPI exclusive mode, organize your library, and edit tags in bulk.<br>Built with Electron + React for Windows and macOS.
+**English** | [한국어](README.ko.md)
+
+A high-fidelity desktop client for Tidal — download lossless **FLAC** (16-bit / 24-bit up to 192 kHz HI_RES_LOSSLESS), grab whole **playlists**, play **bit-perfect** via WASAPI exclusive mode (Windows) or Core Audio Hog Mode (macOS), organize your library, and edit tags in bulk.<br>Built with Electron + React for Windows and macOS.
 
 [![Release](https://img.shields.io/github/v/release/ARCLIGHTSTRVL/tidal-downloader?style=flat-square)](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/ARCLIGHTSTRVL/tidal-downloader/total?style=flat-square)](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases)
@@ -13,7 +15,7 @@ A high-fidelity desktop client for Tidal — download lossless **FLAC** (16-bit 
 
 </div>
 
-> **Status:** v1.0.2 — stable on Windows. macOS **v1.0.2-beta** available for testing — Core Audio Hog Mode (bit-perfect exclusive output), native traffic-light layout, parallel album downloads. Feedback welcome on [Issues](../../issues).
+> **Status:** v1.0.3 — stable on **Windows and macOS**. This release brings native macOS builds (Apple Silicon + Intel) with bit-perfect Core Audio Hog Mode, the full playlist system, English/한국어 UI, update notifications, and a deep file-safety hardening pass. Feedback welcome on [Issues](../../issues).
 
 ---
 
@@ -21,16 +23,28 @@ A high-fidelity desktop client for Tidal — download lossless **FLAC** (16-bit 
 
 <table>
   <tr>
-    <td><img src="docs/images/library.png" alt="Library grid view" /></td>
-    <td><img src="docs/images/discography.png" alt="Artist discography" /></td>
+    <td><img src="docs/images/library.png" alt="Library — artist and album grid with playlists" /></td>
+    <td><img src="docs/images/library-list.png" alt="Library list view with per-track quality (FLAC 96 kHz / 24-bit)" /></td>
   </tr>
   <tr>
-    <td><img src="docs/images/search.png" alt="Search results" /></td>
-    <td><img src="docs/images/album-info.png" alt="Album metadata detail" /></td>
+    <td><img src="docs/images/search.png" alt="Search results — albums, playlists, and tracks" /></td>
+    <td><img src="docs/images/search-home.png" alt="Search home with library stats and favorites" /></td>
   </tr>
   <tr>
-    <td><img src="docs/images/album-art.png" alt="Full-resolution album art" /></td>
-    <td><img src="docs/images/tag-editor.png" alt="Bulk tag editor" /></td>
+    <td><img src="docs/images/album-download.png" alt="Album download in progress — three tracks in parallel" /></td>
+    <td><img src="docs/images/now-playing.png" alt="Now Playing view with ambient album backdrop" /></td>
+  </tr>
+  <tr>
+    <td><img src="docs/images/album-info.png" alt="Album info overlay with Tidal metadata and track list" /></td>
+    <td><img src="docs/images/album-art.png" alt="Full-resolution album art lightbox" /></td>
+  </tr>
+  <tr>
+    <td><img src="docs/images/tag-editor.png" alt="Bulk tag editor with file info" /></td>
+    <td><img src="docs/images/exclusive-mode.png" alt="Per-device exclusive mode (bit-perfect) options" /></td>
+  </tr>
+  <tr>
+    <td><img src="docs/images/settings-korean.png" alt="Settings in Korean (English/한국어 UI)" /></td>
+    <td></td>
   </tr>
 </table>
 
@@ -38,60 +52,64 @@ A high-fidelity desktop client for Tidal — download lossless **FLAC** (16-bit 
 
 - Tidal FLAC streams are saved as standard FLAC — no re-encode, no MP4 wrapper. HI_RES_LOSSLESS tracks come through as 24-bit at 96 or 192 kHz.
 - DASH manifests (used for HI_RES_LOSSLESS) are reassembled and remuxed losslessly via ffmpeg (`-c:a copy`).
-- On Windows, playback uses WASAPI exclusive mode with sample-rate matching for bit-perfect output to the DAC.
-- Each saved FLAC embeds `TIDAL_GUID` and `TIDAL_META` Vorbis tags; the library index can be rebuilt offline from these tags alone.
+- Playback is bit-perfect on both platforms: **WASAPI exclusive mode** on Windows, **Core Audio Hog Mode** on macOS — both take the device exclusively and switch it to the source's native sample rate.
+- Every download embeds Tidal-native identity inside the audio container itself (see below); the library index can be rebuilt offline from these tags alone.
 - The Windows installer is Authenticode-signed by ARCLIGHTSTRVL.
+
+## Built-in track identity
+
+What makes this app different from a plain downloader: **every file it saves carries its own Tidal identity inside the audio container** — a unique `TIDAL_GUID` plus a `TIDAL_META` record (Tidal track ID, original title/artist/album) written as Vorbis comments in FLAC and iTunes boxes in M4A. Because the identity lives in the file, not in a database:
+
+- **The app always recognizes its own downloads.** Rename the file, retag it, move it to another folder — the downloaded-✓ mark, album grouping, and duplicate detection stay accurate, verified against the embedded identity rather than file names or titles.
+- **Your library survives anything.** Wipe the app, move your music to a new machine, or lose the library index entirely — one offline **Rebuild** reconstructs the whole index from the tags in your files, no internet needed.
+- **No imposters.** A same-title file from somewhere else cannot masquerade as your verified download — files without a matching embedded identity are never treated as one.
+- **Standard tags, zero lock-in.** They're ordinary metadata fields that every tagging tool can read (and remove, if you ever want to) — your files stay plain FLAC/M4A that play anywhere.
 
 ## Features
 
 - **Lossless streaming & download** — FLAC at native sample rate, no transcoding for HiFi/Max tiers
 - **Max-quality DASH support** — segment assembly + ffmpeg remux for HI_RES_LOSSLESS (24-bit / 96 kHz / 192 kHz)
-- **Bit-perfect output** — Windows: WASAPI exclusive mode with native sample-rate negotiation, force-volume option. macOS (beta): Core Audio Hog Mode with nominal sample-rate matching
-- **Library** — auto-scanned `Artist > Album` tree with list and grid views, library-wide playback, current-track highlight
+- **Playlists** — browse Tidal playlists (search results, your own + favorites, recent), open any playlist by pasting its link or UUID, batch-download into a dedicated `playlists/<name>/` folder with playlist track order and cover art, and manage them as a first-class Library group
+- **Bit-perfect output** — Windows: WASAPI exclusive mode with native sample-rate negotiation, force-volume option. macOS: Core Audio Hog Mode with nominal sample-rate matching
+- **Fast album downloads** — album tracks download 3 at a time; Max-quality DASH segments are already parallel per track
+- **Library** — auto-scanned `Artist > Album` tree with list and grid views, library-wide playback, current-track highlight, playlist-aware search
 - **Tag editor** — bulk album-level edits, embedded album art, drag-drop file/folder import, multi-root refresh
-- **Search & discovery** — artist/album search with discography (Albums / EP & Singles), favorites, recent history sections
+- **Search & discovery** — artist/album search with discography (Albums / EP & Singles), favorites, recent history sections, library stats on the search home
 - **Playback** — gapless local playback via custom `local://` protocol, shuffle/repeat (off → one → album), responsive seek scrubber
 - **Album art** — selectable embed quality (320 / 640 / 1280), hover tilt, full-resolution lightbox, separate art download path
-- **Persistent state** — library index with Tidal canonical IDs (handles same-name artist collision like *LiSA* vs *LISA*)
+- **Update notifications** (Windows + macOS) — background version checks with a toast that links to the newest release, plus a manual check in Settings
+- **English / 한국어** — switch the UI language instantly in Settings
+- **Persistent state** — library index with Tidal canonical IDs (handles same-name artist collision like *LiSA* vs *LISA*); downloaded-✓ marks verified by embedded identity, so retagged or renamed files keep their checkmark
 - **History navigation** — mouse thumb buttons (XButton1 / XButton2) for app-wide back/forward across pages
 - **Probe available quality** — quick check whether your subscription tier actually returns lossless or AAC for sample tracks (Settings → Check available quality)
-- **Library maintenance** — resync metadata + reorganize files from Tidal online, or rebuild the library index offline from `TIDAL_GUID` / `TIDAL_META` Vorbis comments embedded in your FLACs
+- **Library maintenance** — resync metadata + reorganize files from Tidal online, or rebuild the library index offline from the identity tags embedded in your files (FLAC and M4A)
 
 ## Download
 
-### Stable — v1.0.2 (Windows)
+### v1.0.3 (Windows + macOS)
 
-See [Releases](../../releases/tag/v1.0.2).
-
-| Platform | File | Size |
-|----------|------|------|
-| Windows 10/11 (x64) | `TIDAL DOWNLOADER Setup 1.0.2.exe` | ~118 MB |
-
-### Beta — v1.0.2-beta (macOS only)
-
-> ⚠️ **Beta — not all features are guaranteed to work correctly.** This is an early macOS preview; expect rough edges, especially around exclusive-mode device negotiation. Please [report issues](../../issues) so they can be fixed before v1.0.3 stable.
-
-First macOS build with Core Audio Hog Mode (bit-perfect exclusive output) and the macOS-first UX pass. Code paths shared with Windows (parallel album downloads, library refresh debounce) ship with v1.0.3 on both platforms — this beta is the macOS preview track. See [Releases v1.0.2-beta](../../releases/tag/v1.0.2-beta).
+See [Releases](../../releases/latest).
 
 | Platform | File | Size |
 |----------|------|------|
-| macOS Apple Silicon (arm64) | `TIDAL DOWNLOADER-1.0.2-beta-arm64.dmg` | ~128 MB |
-| macOS Intel (x64) | `TIDAL DOWNLOADER-1.0.2-beta.dmg` | ~134 MB |
+| Windows 10/11 (x64) | `TIDAL DOWNLOADER Setup 1.0.3.exe` | ~119 MB |
+| macOS Apple Silicon (arm64) | `TIDAL DOWNLOADER-1.0.3-arm64.dmg` | ~129 MB |
+| macOS Intel (x64) | `TIDAL DOWNLOADER-1.0.3.dmg` | ~141 MB |
 
-> Beta DMGs are **unsigned** (ad-hoc) — Apple Developer notarization is on the roadmap. See macOS install steps below for the right-click → Open workaround.
+> macOS builds are **unsigned** (Apple Developer notarization is on the roadmap) — see the install steps below for the one-time "Open Anyway" step.
 
 ## Installation
 
 ### Windows
-1. Download `TIDAL DOWNLOADER Setup 1.0.2.exe` from the latest release.
+1. Download `TIDAL DOWNLOADER Setup 1.0.3.exe` from the latest release.
 2. Run the installer — it is signed by **ARCLIGHTSTRVL** (Authenticode), so SmartScreen should not flag it.
 3. Follow the wizard. Per-user install, no admin required.
 
-### macOS (v1.0.2-beta)
+### macOS
 1. Download the `.dmg` matching your CPU (Apple Silicon `arm64` or Intel `x64`).
 2. Mount it and drag *TIDAL DOWNLOADER* into `/Applications`.
-3. First launch: right-click → **Open** to bypass the unidentified-developer warning (beta builds are unsigned).
-4. Or clear the quarantine flag from Terminal: `xattr -cr "/Applications/TIDAL DOWNLOADER.app"`.
+3. First launch: if macOS blocks the app, open **System Settings → Privacy & Security** and click **"Open Anyway"** (needed once). On older macOS versions, right-click → **Open** works too.
+4. Alternatively, clear the quarantine flag from Terminal: `xattr -cr "/Applications/TIDAL DOWNLOADER.app"`.
 
 ## Requirements
 
@@ -103,15 +121,15 @@ First macOS build with Core Audio Hog Mode (bit-perfect exclusive output) and th
 
 1. Launch the app and sign in via the Tidal Device Code flow (your default browser opens automatically with a short code).
 2. Set your download folder in **Settings → Download location**. The album-art folder is initialized to `<downloadPath>/art` automatically.
-3. Search for any artist or album, then click **Download** on a track or **Download All** on an album.
-4. Use the **Library** tab to play your downloaded collection — list mode for browsing, grid mode with artist avatars for visual scanning.
+3. Search for any artist or album — or paste a playlist link — then click **Download** on a track, **Download All** on an album, or download the whole playlist at once.
+4. Use the **Library** tab to play your downloaded collection — list mode for browsing, grid mode with artist avatars for visual scanning, and a dedicated Playlists group.
 5. Use the **Tag Editor** for bulk metadata cleanup before archiving or sharing.
 
 ## Audio quality
 
 Downloads are written as standard FLAC (no MP4 wrapper). When the Tidal manifest is DASH (HI_RES_LOSSLESS), the app assembles segments and remuxes losslessly via ffmpeg (`-c:a copy`). When the requested quality is unavailable for a track, the app falls back gracefully and only saves real FLAC — never a re-encoded AAC.
 
-On Windows, **Use exclusive mode** in the audio device picker takes hold of the device for bit-perfect output and matches the source sample rate / bit depth (16/44.1, 24/96, 24/192). On macOS the toggle currently has no effect (Core Audio Hog Mode is on the roadmap).
+**Use exclusive mode** in the audio device picker takes hold of the device for bit-perfect output and matches the source sample rate / bit depth (16/44.1, 24/96, 24/192) — via WASAPI exclusive mode on Windows and Core Audio Hog Mode on macOS.
 
 ## Reporting issues
 
