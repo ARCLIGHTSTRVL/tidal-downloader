@@ -6,7 +6,7 @@
 
 [English](README.md) | **한국어**
 
-Tidal을 위한 고음질 데스크톱 클라이언트 — 무손실 **FLAC** 다운로드(16비트 / 24비트, 최대 192 kHz HI_RES_LOSSLESS), **플레이리스트** 통째로 받기, **비트퍼펙트** 재생(Windows: WASAPI 배타 모드, macOS: Core Audio Hog Mode), 라이브러리 정리와 일괄 태그 편집까지.<br>Electron + React 기반, Windows / macOS 지원.
+Tidal을 위한 고음질 데스크톱 클라이언트 — 무손실 **FLAC** 다운로드(16비트 / 24비트, 최대 192 kHz HI_RES_LOSSLESS), **플레이리스트** 통째로 받기, **비트퍼펙트** 재생(Windows: WASAPI 베타 모드, macOS: Core Audio Hog Mode), 라이브러리 정리와 일괄 태그 편집까지.<br>Electron + React 기반, Windows / macOS 지원.
 
 [![Release](https://img.shields.io/github/v/release/ARCLIGHTSTRVL/tidal-downloader?style=flat-square)](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/ARCLIGHTSTRVL/tidal-downloader/total?style=flat-square)](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases)
@@ -39,7 +39,7 @@ Tidal을 위한 고음질 데스크톱 클라이언트 — 무손실 **FLAC** �
     <td><img src="docs/images/album-info.png" alt="앨범 정보 오버레이 — Tidal 메타데이터와 트랙 목록" /></td>
   </tr>
   <tr>
-    <td><img src="docs/images/exclusive-mode.png" alt="장치별 배타 모드(비트퍼펙트) 옵션" /></td>
+    <td><img src="docs/images/exclusive-mode.png" alt="장치별 베타 모드(비트퍼펙트) 옵션" /></td>
     <td><img src="docs/images/tag-editor.png" alt="일괄 태그 편집기와 파일 정보" /></td>
   </tr>
   <tr>
@@ -52,7 +52,7 @@ Tidal을 위한 고음질 데스크톱 클라이언트 — 무손실 **FLAC** �
 
 - Tidal의 FLAC 스트림을 표준 FLAC 그대로 저장합니다 — 재인코딩 없음, MP4 래퍼 없음. HI_RES_LOSSLESS 트랙은 24비트 96/192 kHz로 저장됩니다.
 - HI_RES_LOSSLESS에 쓰이는 DASH 매니페스트는 세그먼트를 조립한 뒤 ffmpeg로 무손실 remux(`-c:a copy`)합니다.
-- 재생은 양 플랫폼 모두 비트퍼펙트: Windows는 **WASAPI 배타 모드**, macOS는 **Core Audio Hog Mode** — 장치를 독점 점유하고 음원의 네이티브 샘플레이트로 직접 전환합니다.
+- 재생은 양 플랫폼 모두 비트퍼펙트: Windows는 **WASAPI 베타 모드**, macOS는 **Core Audio Hog Mode** — 장치를 독점 점유하고 음원의 네이티브 샘플레이트로 직접 전환합니다.
 - 모든 다운로드에 TIDAL 원본 정보가 파일 안에 함께 저장됩니다(아래 참고). 라이브러리 인덱스는 이 정보만으로 오프라인 재구축이 가능합니다.
 - Windows 인스톨러는 ARCLIGHTSTRVL의 Authenticode 서명이 되어 있습니다.
 
@@ -70,7 +70,7 @@ Tidal을 위한 고음질 데스크톱 클라이언트 — 무손실 **FLAC** �
 - **Tidal의 모든 음질 지원** — Max(HI_RES_LOSSLESS 24비트 최대 192 kHz FLAC), HiFi(16/44.1 FLAC), High(AAC 320 kbps, 정식 `.m4a`) — 전부 동일한 원본 정보 내장·라이브러리 기능 지원, 재인코딩 없음
 - **최고 음질 DASH 지원** — HI_RES_LOSSLESS(24비트 / 96 kHz / 192 kHz) 세그먼트 조립 + ffmpeg remux
 - **플레이리스트** — Tidal 플레이리스트 탐색(검색 결과, 내 플레이리스트+즐겨찾기, 최근 열람), 링크나 UUID를 붙여넣어 바로 열기, `playlists/<이름>/` 전용 폴더로 일괄 다운로드(플레이리스트 순번 파일명 + 커버 아트), 라이브러리의 전용 그룹으로 관리
-- **비트퍼펙트 출력** — Windows: WASAPI 배타 모드 + 네이티브 샘플레이트 협상 + 볼륨 고정 옵션. macOS: Core Audio Hog Mode + 노미널 샘플레이트 매칭
+- **비트퍼펙트 출력** — Windows: WASAPI 베타 모드 + 네이티브 샘플레이트 협상 + 볼륨 고정 옵션. macOS: Core Audio Hog Mode + 노미널 샘플레이트 매칭
 - **빠른 앨범 다운로드** — 앨범 트랙 3개 동시 다운로드, Max 음질 DASH는 트랙별 세그먼트 병렬
 - **라이브러리** — 자동 스캔되는 `아티스트 > 앨범` 트리, 리스트/그리드 뷰, 라이브러리 전체 이어듣기, 현재 곡 하이라이트, 플레이리스트 포함 검색
 - **태그 편집기** — 앨범 단위 일괄 편집, 앨범 아트 내장, 드래그-드롭 파일/폴더 가져오기, 다중 루트 새로고침
@@ -129,7 +129,7 @@ Tidal을 위한 고음질 데스크톱 클라이언트 — 무손실 **FLAC** �
 
 Max·HiFi 다운로드는 표준 FLAC으로 저장됩니다(MP4 래퍼 없음). Tidal 매니페스트가 DASH(HI_RES_LOSSLESS)면 세그먼트를 조립해 ffmpeg로 무손실 remux(`-c:a copy`)합니다. High 티어는 진짜 AAC 320 kbps를 `.m4a`로 저장합니다. 어떤 경우에도 재인코딩·위장은 없습니다 — 무손실 티어가 제공되지 않는 트랙은 자연스럽게 폴백하며, 재인코딩된 AAC를 FLAC으로 속여 저장하지 않습니다.
 
-오디오 장치 선택기의 **배타 모드 사용**을 켜면 장치를 독점 점유해 음원의 샘플레이트/비트 심도(16/44.1, 24/96, 24/192)에 맞춰 비트퍼펙트로 출력합니다 — Windows는 WASAPI 배타 모드, macOS는 Core Audio Hog Mode.
+오디오 장치 선택기의 **베타 모드 사용**을 켜면 장치를 독점 점유해 음원의 샘플레이트/비트 심도(16/44.1, 24/96, 24/192)에 맞춰 비트퍼펙트로 출력합니다 — Windows는 WASAPI 베타 모드, macOS는 Core Audio Hog Mode.
 
 ## 버그 신고
 
