@@ -127,6 +127,8 @@ See [Releases](../../releases/latest).
 
 ## Audio quality
 
+HiFi returns real 16-bit lossless as of v1.0.3. Builds before that authenticated with a client tier Tidal silently downgraded to AAC, so a HiFi request came back as `.m4a` and only Max produced FLAC; login now uses the TV client (PKCE), which serves true 16-bit / 44.1 kHz FLAC.
+
 Max and HiFi downloads are written as standard FLAC (no MP4 wrapper). When the Tidal manifest is DASH (HI_RES_LOSSLESS), the app assembles segments and remuxes losslessly via ffmpeg (`-c:a copy`). The High tier saves true AAC 320 kbps as `.m4a`. Nothing is ever transcoded or disguised: when a lossless tier is unavailable for a track, the app falls back gracefully and never passes re-encoded AAC off as FLAC.
 
 **Use exclusive mode** in the audio device picker takes hold of the device for bit-perfect output and matches the source sample rate / bit depth (16/44.1, 24/96, 24/192) — via WASAPI exclusive mode on Windows and Core Audio Hog Mode on macOS.

@@ -127,6 +127,8 @@ Tidal을 위한 고음질 데스크톱 클라이언트 — 무손실 **FLAC** �
 
 ## 음질
 
+HiFi가 실제로 16비트 무손실을 반환하는 것은 v1.0.3부터입니다. 그 이전 빌드는 Tidal이 조용히 AAC로 강등시키는 클라이언트 등급으로 로그인해서, HiFi를 요청해도 `.m4a`가 내려왔고 사실상 Max에서만 FLAC을 받을 수 있었습니다. 이제 TV 클라이언트(PKCE)로 로그인하며, 이 등급만이 진짜 16비트 / 44.1 kHz FLAC을 제공합니다.
+
 Max·HiFi 다운로드는 표준 FLAC으로 저장됩니다(MP4 래퍼 없음). Tidal 매니페스트가 DASH(HI_RES_LOSSLESS)면 세그먼트를 조립해 ffmpeg로 무손실 remux(`-c:a copy`)합니다. High 티어는 진짜 AAC 320 kbps를 `.m4a`로 저장합니다. 어떤 경우에도 재인코딩·위장은 없습니다 — 무손실 티어가 제공되지 않는 트랙은 자연스럽게 폴백하며, 재인코딩된 AAC를 FLAC으로 속여 저장하지 않습니다.
 
 오디오 장치 선택기의 **exclusive 모드 사용**을 켜면 장치를 독점 점유해 음원의 샘플레이트/비트 심도(16/44.1, 24/96, 24/192)에 맞춰 비트퍼펙트로 출력합니다 — Windows는 WASAPI exclusive 모드, macOS는 Core Audio Hog Mode.
