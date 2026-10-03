@@ -30,11 +30,23 @@ install or use the Software.
 
 3. Third-Party Components
    The Software bundles or interacts with third-party components,
-   including but not limited to ffmpeg (LGPL-2.1-or-later) via the
-   "ffmpeg-static" package, "node-taglib-sharp", and Electron. These
+   including but not limited to FFmpeg via the "ffmpeg-static" package,
+   "node-taglib-sharp", and Electron. The bundled ffmpeg-static 5.3.0
+   package declares GPL-3.0-or-later. FFmpeg's applicable LGPL or GPL
+   terms depend on the binary's build options; the Windows FFmpeg 6.1.1
+   binary reports GPL version 3 or later. These
    components remain subject to their own licenses; nothing in this
    Agreement is intended to restrict rights granted under those
    licenses with respect to those components.
+
+   FFmpeg license information: https://ffmpeg.org/legal.html
+   FFmpeg source: https://ffmpeg.org/download.html
+   ffmpeg-static source and binary provenance:
+   https://github.com/eugeneware/ffmpeg-static
+   Binary release and platform-specific license files:
+   https://github.com/eugeneware/ffmpeg-static/releases/tag/b6.1.1
+   Windows FFmpeg source revision listed by the binary distributor:
+   https://github.com/FFmpeg/FFmpeg/commit/e38092ef93
 
 4. No Affiliation with Tidal
    The Software is an independent, third-party tool. It is not

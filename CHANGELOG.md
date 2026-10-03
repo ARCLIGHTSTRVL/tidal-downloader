@@ -2,6 +2,39 @@
 
 All notable user-visible changes to TIDAL DOWNLOADER.
 
+## v1.0.5 — 2026-10-04
+
+### Improved
+
+- Edit folder and filename rules directly or with tags without losing the complete rule when switching views.
+- Use presets, tag help and sample-track previews, then explicitly save naming changes. Existing valid saved settings are retained; new settings default to `Album artist/Album` folders and `Track number - Title` filenames.
+- Optionally group releases into `Albums`, `EPs`, `Singles` and `Compilations`, with a choice to merge compilations into `Albums`. Preview and explicitly apply changes to existing library files.
+- Choose album title, year or recently added in the Library's list-view sort menu; keep the selected order when switching views.
+- Improve result reporting for tag edits, file moves and deletion, and download completion or cancellation.
+- Improve track changes and cancellation during playback preparation, and cleanup of active work when quitting.
+- Show settings recovery and save-failure feedback. Add a GitHub Star link below the update check.
+
+### Installation notes
+
+- Windows x64 and macOS arm64/x64 downloads are available. macOS requires Monterey 12 or later.
+- Use a manual update with the current signing setup. The Windows installer is self-signed; Mac builds have no Apple Developer ID signature or notarization.
+- The Intel Mac build was exercised under Rosetta on Apple Silicon; Intel hardware was not tested.
+
+See the [v1.0.5 release notes](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/tag/v1.0.5) for downloads and update guidance.
+
+## v1.0.4 — 2026-09-27
+
+- Prevent hard-to-access Windows folders whose names end in a period or space.
+- Improve album browsing when deluxe and other editions were missing.
+- Clarify Artist and Album Artist folder choices and improve folder/file templates.
+- Improve recently-added Library sorting.
+- Fix AAC/M4A identity metadata and restoration of download-complete indicators.
+- Match library-record recovery warnings to the file's recovery-information state.
+- Label High AAC as lossy by design and distinguish it from a downgraded lossless request.
+- Improve update notification behavior and Korean/English guidance.
+
+See the [v1.0.4 release notes](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/tag/v1.0.4) for the original update instructions and limitations.
+
 ## v1.0.3 — 2026-08-14
 
 ### New
@@ -21,7 +54,7 @@ All notable user-visible changes to TIDAL DOWNLOADER.
 - An expired Tidal session shows an error banner instead of pretending there are no results.
 - Player overlay: correct per-track artists, ALBUM INFO follows the current song, the queue follows the current album/playlist, album art can no longer stick to the wrong cover.
 - Library toolbar stays pinned while scrolling; failed deletes show a summary instead of silently vanishing from the UI; unreadable folders show a warning banner instead of masquerading as an empty library.
-- Downloaded-✓ marks are verified by embedded identity instead of file names — retagged or renamed files keep their checkmark, and identity-less files can't inherit one.
+- Added embedded-identity checks for downloaded-✓ marks, helping recognize renamed or retagged files. Some legacy indexed files can still match by title when embedded identity is not required.
 - Settings polish: consistent controls, Reset no longer wipes language/update preferences, hold-to-delete requires a real 1-second hold.
 
 ### Reliability
@@ -93,4 +126,4 @@ Initial public release on Windows.
 - **Library maintenance** — *Resync from TIDAL (online)* re-fetches metadata + re-applies your folder/naming rules to existing files; *Rebuild from FLAC (offline)* reconstructs the library index from the embedded Vorbis comments.
 - Splash window (1280 × 1280, ≥ 600 ms minimum), single-instance lock, spacebar play/pause, album catalog pagination (limit = 50), DevTools blocked in packaged builds.
 
-(See repository for the full code-level history starting v1.0.2.)
+(See [Releases](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases) for the original release notes and downloads.)

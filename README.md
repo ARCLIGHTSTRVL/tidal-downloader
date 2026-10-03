@@ -10,16 +10,18 @@ A high-fidelity desktop client for Tidal — download lossless **FLAC** (16-bit 
 
 [![Release](https://img.shields.io/github/v/release/ARCLIGHTSTRVL/tidal-downloader?style=flat-square)](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/ARCLIGHTSTRVL/tidal-downloader/total?style=flat-square)](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases)
-[![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS-lightgrey?style=flat-square)]()
+![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS-lightgrey?style=flat-square)
 [![License](https://img.shields.io/badge/license-Proprietary-blue?style=flat-square)](LICENSE)
 
 </div>
 
-> **Status:** v1.0.3 — stable on **Windows and macOS**. This release brings native macOS builds (Apple Silicon + Intel) with bit-perfect Core Audio Hog Mode, the full playlist system, English/한국어 UI, update notifications, and a deep file-safety hardening pass. Feedback welcome on [Issues](../../issues).
+> **Latest: v1.0.5** — clearer folder and file naming, optional album-type folders, improved library sorting, and better feedback when saving settings or working with files. Available for **Windows x64 and macOS Apple Silicon / Intel**. See the [changelog](CHANGELOG.md) and [release notes](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/tag/v1.0.5).
 
 ---
 
 ## Screenshots
+
+Some screenshots show an earlier version of Settings. See the [User Guide](docs/USER_GUIDE.md#download) for the current naming controls.
 
 <table>
   <tr>
@@ -50,19 +52,19 @@ A high-fidelity desktop client for Tidal — download lossless **FLAC** (16-bit 
 
 ## How it works
 
-- Tidal FLAC streams are saved as standard FLAC — no re-encode, no MP4 wrapper. HI_RES_LOSSLESS tracks come through as 24-bit at 96 or 192 kHz.
+- Tidal FLAC streams are saved as standard FLAC without re-encoding the audio. Max requests lossless quality up to 24-bit / 192 kHz, depending on the track and Tidal's response.
 - DASH manifests (used for HI_RES_LOSSLESS) are reassembled and remuxed losslessly via ffmpeg (`-c:a copy`).
-- Playback is bit-perfect on both platforms: **WASAPI exclusive mode** on Windows, **Core Audio Hog Mode** on macOS — both take the device exclusively and switch it to the source's native sample rate.
-- Every download embeds Tidal-native identity inside the audio container itself (see below); the library index can be rebuilt offline from these tags alone.
-- The Windows installer is Authenticode-signed by ARCLIGHTSTRVL.
+- Exclusive playback uses **WASAPI exclusive mode** on Windows or **Core Audio Hog Mode** on macOS and requests the source's sample rate. Available formats and exclusive access depend on the audio device.
+- The app writes Tidal identity into supported FLAC/M4A downloads (see below). These tags support offline index recovery; incomplete tag or index writes are reported in Downloads.
+- The Windows installer is self-signed by ARCLIGHTSTRVL and timestamped. Windows may still show a trust or SmartScreen warning.
 
 ## Built-in track identity
 
-What makes this app different from a plain downloader: **every file it saves carries its own Tidal identity inside the audio container** — a unique `TIDAL_GUID` plus a `TIDAL_META` record (Tidal track ID, original title/artist/album) written as Vorbis comments in FLAC and iTunes boxes in M4A. Because the identity lives in the file, not in a database:
+The app stores **Tidal identity inside supported audio files** — a unique `TIDAL_GUID` plus a `TIDAL_META` record (Tidal track ID, original title/artist/album) written as Vorbis comments in FLAC and iTunes boxes in M4A. Files with these fields can be matched independently of their names:
 
-- **The app always recognizes its own downloads.** Rename the file, retag it, move it to another folder — the downloaded-✓ mark, album grouping, and duplicate detection stay accurate, verified against the embedded identity rather than file names or titles.
-- **Your library survives anything.** Wipe the app, move your music to a new machine, or lose the library index entirely — one offline **Rebuild** reconstructs the whole index from the tags in your files, no internet needed.
-- **No imposters.** A same-title file from somewhere else cannot masquerade as your verified download — files without a matching embedded identity are never treated as one.
+- **Match downloads after renaming or retagging.** Retained embedded identity can help the app recognize a file despite changed names or tags. After moving files outside the app, refresh or rebuild the library in its current location.
+- **Recover the library index offline.** **Rebuild** reads the identity tags in accessible FLAC and M4A files. Keep these fields intact when using another tag editor; files with missing or damaged identity may need attention.
+- **Read checkmarks in context.** Some older library entries can match by title when embedded identity is not required. A download checkmark alone is not proof of a file's identity.
 - **Standard tags, zero lock-in.** They're ordinary metadata fields that every tagging tool can read (and remove, if you ever want to) — your files stay plain FLAC/M4A that play anywhere.
 
 ## Features
@@ -72,62 +74,69 @@ What makes this app different from a plain downloader: **every file it saves car
 - **Playlists** — browse Tidal playlists (search results, your own + favorites, recent), open any playlist by pasting its link or UUID, batch-download into a dedicated `playlists/<name>/` folder with playlist track order and cover art, and manage them as a first-class Library group
 - **Bit-perfect output** — Windows: WASAPI exclusive mode with native sample-rate negotiation, force-volume option. macOS: Core Audio Hog Mode with nominal sample-rate matching
 - **Fast album downloads** — album tracks download 3 at a time; Max-quality DASH segments are already parallel per track
-- **Library** — auto-scanned `Artist > Album` tree with list and grid views, library-wide playback, current-track highlight, playlist-aware search
+- **Library** — list and grid views, album sorting by title, year or recently added, library-wide playback, current-track highlight, playlist-aware search
+- **Folder and file naming** — edit the same rule directly or with tags, use presets and sample previews, then save explicitly. New settings default to `Album artist/Album` folders and `Track number - Title` filenames; existing valid saved rules stay in place
+- **Album-type folders** — optionally group releases into `Albums`, `EPs`, `Singles` and `Compilations`. Preview existing-library changes and select **Apply** when ready
 - **Tag editor** — bulk album-level edits, embedded album art, drag-drop file/folder import, multi-root refresh
 - **Search & discovery** — artist/album search with discography (Albums / EP & Singles), favorites, recent history sections, library stats on the search home
-- **Playback** — gapless local playback via custom `local://` protocol, shuffle/repeat (off → one → album), responsive seek scrubber
+- **Playback** — local playback via custom `local://` protocol, shuffle/repeat (off → one → album), responsive seek scrubber
 - **Album art** — selectable embed quality (320 / 640 / 1280), hover tilt, full-resolution lightbox, separate art download path
-- **Update notifications** (Windows + macOS) — background version checks with a toast that links to the newest release, plus a manual check in Settings
+- **Update checks** (Windows + macOS) — background version checks and a manual check in Settings. Use the release files below for manual updates with the current signing setup
 - **English / 한국어** — switch the UI language instantly in Settings
-- **Persistent state** — library index with Tidal canonical IDs (handles same-name artist collision like *LiSA* vs *LISA*); downloaded-✓ marks verified by embedded identity, so retagged or renamed files keep their checkmark
+- **Persistent state** — a library index stores Tidal canonical IDs to distinguish artists such as *LiSA* and *LISA*. File matching uses embedded identity where available, with title-based matching for some older entries
 - **History navigation** — mouse thumb buttons (XButton1 / XButton2) for app-wide back/forward across pages
 - **Probe available quality** — quick check whether your subscription tier actually returns lossless or AAC for sample tracks (Settings → Check available quality)
 - **Library maintenance** — resync metadata + reorganize files from Tidal online, or rebuild the library index offline from the identity tags embedded in your files (FLAC and M4A)
 
 ## Download
 
-### v1.0.3 (Windows + macOS)
+### v1.0.5 (Windows + macOS)
 
 See [Releases](../../releases/latest).
 
-| Platform | File | Size |
-|----------|------|------|
-| Windows 10/11 (x64) | `TIDAL DOWNLOADER Setup 1.0.3.exe` | ~119 MB |
-| macOS Apple Silicon (arm64) | `TIDAL DOWNLOADER-1.0.3-arm64.dmg` | ~129 MB |
-| macOS Intel (x64) | `TIDAL DOWNLOADER-1.0.3.dmg` | ~141 MB |
+| Platform | Download |
+|----------|----------|
+| Windows 10/11 (x64) | [Setup .exe](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.5/TIDAL-DOWNLOADER-Setup-1.0.5.exe) |
+| macOS 12+ Apple Silicon (arm64) | [DMG](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.5/TIDAL-DOWNLOADER-1.0.5-arm64.dmg) · [ZIP](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.5/TIDAL-DOWNLOADER-1.0.5-arm64-mac.zip) |
+| macOS 12+ Intel (x64) | [DMG](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.5/TIDAL-DOWNLOADER-1.0.5.dmg) · [ZIP](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.5/TIDAL-DOWNLOADER-1.0.5-mac.zip) |
 
-> macOS builds are **unsigned** (Apple Developer notarization is on the roadmap) — see the install steps below for the one-time "Open Anyway" step.
+The Intel build was exercised under Rosetta on Apple Silicon, not on Intel Mac hardware. Mac builds are not signed with an Apple Developer ID or notarized; Gatekeeper blocks them by default.
 
 ## Installation
 
 ### Windows
-1. Download `TIDAL DOWNLOADER Setup 1.0.3.exe` from the latest release.
-2. Run the installer — it is signed by **ARCLIGHTSTRVL** (Authenticode), so SmartScreen should not flag it.
-3. Follow the wizard. Per-user install, no admin required.
+1. Quit TIDAL DOWNLOADER and download `TIDAL-DOWNLOADER-Setup-1.0.5.exe` from the release above.
+2. Run the installer. Its self-signed certificate is not rooted in Windows' trusted certificate store, so a trust or SmartScreen warning may appear.
+3. Follow the wizard. A per-user installation normally does not require administrator rights. All-user installations or changes to a protected existing installation may prompt for elevation.
 
 ### macOS
 1. Download the `.dmg` matching your CPU (Apple Silicon `arm64` or Intel `x64`).
 2. Mount it and drag *TIDAL DOWNLOADER* into `/Applications`.
-3. First launch: if macOS blocks the app, open **System Settings → Privacy & Security** and click **"Open Anyway"** (needed once). On older macOS versions, right-click → **Open** works too.
-4. Alternatively, clear the quarantine flag from Terminal: `xattr -cr "/Applications/TIDAL DOWNLOADER.app"`.
+3. If macOS blocks the app, review **Privacy & Security** in System Settings (or **Security & Privacy** in System Preferences on Monterey) and use **Open Anyway** if you choose to allow it.
+
+### Updating from an earlier version
+
+Download the appropriate release file and update manually after quitting the app, including its tray or menu-bar instance. Automatic installation is not reliable with the current Windows and Mac signing setup.
+
+Existing valid saved settings, including download paths and naming rules, are retained. The new default naming layout applies when no valid saved value exists; installing a new version does not itself reorganize your music. In Settings, save naming changes first, then preview and explicitly apply any existing-library changes.
 
 ## Requirements
 
-- **Tidal subscription** — HiFi or HiFi Plus required for lossless / Max-quality streams.
-- **Windows 10/11 (x64)** or **macOS 10.15+** (Intel or Apple Silicon).
-- ~250 MB free disk space (excluding your music library).
+- **An active Tidal subscription** with access to the requested audio quality. Availability can vary by account, region and track.
+- **Windows 10/11 (x64)** or **macOS 12 Monterey or later** (Intel or Apple Silicon).
+- Free disk space for the application, downloaded music and temporary downloads.
 
 ## Quick start
 
-1. Launch the app and sign in via the Tidal Device Code flow (your default browser opens automatically with a short code).
+1. Launch the app, click **Login**, and complete sign-in in the Tidal sign-in window.
 2. Set your download folder in **Settings → Download location**. The album-art folder is initialized to `<downloadPath>/art` automatically.
 3. Search for any artist or album — or paste a playlist link — then click **Download** on a track, **Download All** on an album, or download the whole playlist at once.
 4. Use the **Library** tab to play your downloaded collection — list mode for browsing, grid mode with artist avatars for visual scanning, and a dedicated Playlists group.
-5. Use the **Tag Editor** for bulk metadata cleanup before archiving or sharing.
+5. Use **Settings → Download naming** to choose your folder and file rules, then **Save**. Use the **Tag Editor** for bulk metadata edits.
 
 ## Audio quality
 
-HiFi returns real 16-bit lossless as of v1.0.3. Builds before that authenticated with a client tier Tidal silently downgraded to AAC, so a HiFi request came back as `.m4a` and only Max produced FLAC; login now uses the TV client (PKCE), which serves true 16-bit / 44.1 kHz FLAC.
+Choose **Max**, **HiFi** or **High** in Settings. Use **Check available quality** to see what Tidal currently returns for your account. High is AAC by design; AAC returned for a lossless request is reported separately.
 
 Max and HiFi downloads are written as standard FLAC (no MP4 wrapper). When the Tidal manifest is DASH (HI_RES_LOSSLESS), the app assembles segments and remuxes losslessly via ffmpeg (`-c:a copy`). The High tier saves true AAC 320 kbps as `.m4a`. Nothing is ever transcoded or disguised: when a lossless tier is unavailable for a track, the app falls back gracefully and never passes re-encoded AAC off as FLAC.
 
@@ -138,10 +147,10 @@ Max and HiFi downloads are written as standard FLAC (no MP4 wrapper). When the T
 Please open a bug or feature request on the [Issues page](../../issues).
 
 When reporting a bug, please include:
-- App version (**Settings → About** footer)
+- App version (at the bottom of **Settings**)
 - OS + version
 - Steps to reproduce
-- Tidal subscription tier (HiFi / HiFi Plus)
+- Requested audio quality (Max / HiFi / High), and your subscription plan if relevant
 - Console output if reproducible — on Windows, launch from PowerShell with:
   ```powershell
   $env:ELECTRON_ENABLE_LOGGING=1
@@ -154,7 +163,7 @@ This is an unofficial, third-party tool. It is **not affiliated with, sponsored 
 
 You are responsible for complying with Tidal's Terms of Service. Downloads are intended for personal, offline access to music you have already paid for through your subscription. **Do not redistribute downloaded content.**
 
-ffmpeg is used internally and is licensed under LGPL-2.1+ — see [ffmpeg.org/legal.html](https://ffmpeg.org/legal.html) for details. The bundled binaries come from [`ffmpeg-static`](https://www.npmjs.com/package/ffmpeg-static).
+FFmpeg is used internally; its applicable LGPL or GPL terms depend on the binary's build options. The bundled Windows build enables GPL components. See [FFmpeg's legal information](https://ffmpeg.org/legal.html), [FFmpeg source downloads](https://ffmpeg.org/download.html), and the [`ffmpeg-static` binary release and license files](https://github.com/eugeneware/ffmpeg-static/releases/tag/b6.1.1).
 
 ## License
 
@@ -163,6 +172,8 @@ Copyright © 2026 **ARCLIGHTSTRVL**. All rights reserved.
 The compiled application is provided as-is for personal use. Source code is not publicly available. See [LICENSE](LICENSE) for the full terms.
 
 ## Support
+
+You can star the [GitHub repository](https://github.com/ARCLIGHTSTRVL/tidal-downloader) from here or from the **GitHub Star** link below **Check for updates** in Settings.
 
 If you find TIDAL DOWNLOADER useful, you can support development on [Ko-fi](https://ko-fi.com/arclights). Every contribution helps keep the project maintained — thank you.
 

@@ -6,7 +6,7 @@ This is a closed-source application. The build artifacts are released here, but 
 
 ## What you *can* do
 
-- **Report a bug** — open an [Issue](../../issues/new/choose) using the **Bug report** template. Please include the app version (Settings → About footer), OS, and steps to reproduce.
+- **Report a bug** — open an [Issue](../../issues/new/choose) using the **Bug report** template. Please include the app version (at the bottom of Settings), OS, and steps to reproduce.
 - **Request a feature** — open an [Issue](../../issues/new/choose) using the **Feature request** template. Describe the user need first, the implementation second.
 - **Ask a question / share a tip** — Issues are also fine for these; tag the issue with a `question` label and one of the maintainers will respond.
 

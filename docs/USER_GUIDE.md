@@ -1,6 +1,6 @@
 # TIDAL DOWNLOADER — User Guide
 
-This guide covers everything you need to use the app day-to-day. For installation see the [README](../README.md).
+This guide describes v1.0.5. For downloads, supported operating systems, installation and manual updates, see the [README](../README.md#download).
 
 ## Contents
 - [First launch](#first-launch)
@@ -12,14 +12,16 @@ This guide covers everything you need to use the app day-to-day. For installatio
 - [Downloads page](#downloads-page)
 - [Tag editor](#tag-editor)
 - [Player bar](#player-bar)
-- [Audio device picker (Windows)](#audio-device-picker-windows)
+- [Audio device picker](#audio-device-picker)
 - [Settings reference](#settings-reference)
   - [Account](#account)
   - [Playback](#playback)
   - [Audio quality](#audio-quality-1)
   - [Album art quality](#album-art-quality-1)
   - [Download](#download)
+  - [Album-type grouping](#album-type-grouping)
   - [Library maintenance](#library-maintenance)
+  - [Settings recovery and updates](#settings-recovery-and-updates)
   - [Reset](#reset)
 - [Mouse & keyboard shortcuts](#mouse--keyboard-shortcuts)
 - [Troubleshooting](#troubleshooting)
@@ -29,11 +31,11 @@ This guide covers everything you need to use the app day-to-day. For installatio
 ## First launch
 
 1. The app opens with a Tidal sign-in modal. Click **Login**.
-2. Your default browser opens with an 8-character code pre-filled (or paste it manually). Approve the device.
-3. The app picks up the token automatically — the modal closes and the home view appears.
+2. Complete authentication in the Tidal sign-in window.
+3. After successful sign-in, the app returns to its main view.
 4. Open **Settings → Download location** and pick a folder. The album-art folder is initialized to `<downloadPath>/art` automatically; you can change it under **Album art download location**.
 
-The app refreshes the Tidal token automatically every five minutes.
+Keep **Auto-refresh** enabled in Settings to let the app renew its session in the background. Tidal may still require you to sign in again.
 
 ## Audio quality
 
@@ -43,7 +45,7 @@ Tidal serves audio in two manifest formats:
 |---------|----------|--------------|
 | **Max** (HI_RES_LOSSLESS / HI_RES) | DASH | 24-bit FLAC at the album's native sample rate (typically 44.1 / 48 / 96 / 192 kHz). The app downloads the segments and remuxes them into a standard FLAC file losslessly (`-c:a copy`). |
 | **HiFi** (LOSSLESS) | BTS (single URL) | 16-bit / 44.1 kHz FLAC, downloaded as one file. |
-| **High** | BTS (single URL) | AAC. Skipped automatically if you ask for LOSSLESS or higher. |
+| **High** | BTS (single URL) | AAC, saved as `.m4a` when High is selected. AAC returned for a lossless request is handled separately. |
 
 **Settings → Audio quality** controls both playback and download. Max takes ~1–3 s on first play because the app assembles DASH segments before sending to ffmpeg; HiFi plays instantly when Tidal serves it as 16-bit FLAC.
 
@@ -55,7 +57,7 @@ Tidal does not always deliver the tier you asked for. The app handles this by st
 - **Max requested → only LOSSLESS delivered**: the file is saved as 16-bit / 44.1 kHz FLAC (HiFi tier). The download still goes through, but at the lower native bit depth that Tidal made available. This is a real, lossless FLAC — just not 24-bit.
 - **HiFi requested → only LOSSLESS delivered**: 16-bit FLAC, exactly as expected.
 - **Either tier requested → only AAC available**: the app **does not save** an AAC pretending to be lossless. The track is skipped; only real FLAC reaches your library. (The library "✓" mark also won't appear, so you can re-attempt later from a different account or after a Tidal-side fix.)
-- **High requested**: AAC is what you asked for; saved directly.
+- **High requested**: AAC is what you asked for; saved as `.m4a` without re-encoding the audio.
 
 In short, you can't get a worse-than-FLAC file from a HiFi/Max download, but you may get FLAC at a lower bit depth than you wanted (silent downgrade by Tidal). Use **Settings → Check available quality** to find out in advance which tiers your account can actually fetch lossless audio at.
 
@@ -73,7 +75,7 @@ The app uses a fallback chain: if Tidal doesn't have the requested size for an a
 
 The home view has four sections:
 
-- **Favorites** — heart-marked artists (stored in `~/.tidal-downloader-favorites.json`)
+- **Favorites** — heart-marked artists
 - **Recent Artists**
 - **Recent Albums**
 - **Recent EP & Singles**
@@ -95,15 +97,17 @@ Click any album to open its **Album page** with a large cover (which you can hov
 
 The first time you download from an artist whose folder name conflicts with an existing same-name artist, the app prompts you for an override (e.g. `LiSA (KR)`). The next download from that same canonical artist ID re-uses your override silently.
 
-When you have **Album art quality = High** set, the embedded art is verified to be 1280 × 1280 (or whatever fallback succeeded) — check the Settings → About if you ever want to confirm what's currently in your tags.
+**Album art quality = High** requests 1280 × 1280 art, with a smaller image used when that size is unavailable.
 
 ## Library
 
-The Library tab automatically scans your download folder using the `Artist > Album` structure.
+The Library tab scans your configured download folder and groups indexed tracks by artist and album. New settings use `Album artist/Album` folders; saved custom layouts and optional album-type folders are also supported.
 
 Two view modes:
 - **List** — Artist → Album → Track tree. Currently-playing track is highlighted in cyan.
 - **Grid** — artist sections with circular avatars (auto-fetched from Tidal) and album-art cards. Click an album to open a 75 %-width detail view with the large cover and track list.
+
+In List view, use **Sort albums** to choose album title, year or recently added. The selected list order is retained when you switch to Grid and back.
 
 In Grid mode, each artist section header has an `✕` button (top-right). Clicking it asks for confirmation, then deletes the entire artist folder recursively and scrubs the library index.
 
@@ -118,10 +122,10 @@ You can play any local file by clicking it — the app uses a custom `local://` 
 The **Downloads** tab in the sidebar (between **Tag Editor** and **Settings**) shows download activity at a glance.
 
 - **In progress** — currently-downloading tracks with their album art, title, and a real-time progress bar.
-- **Completed / failed** — finished history with a status icon (✓ for success, ✗ for failure with the reason on hover).
+- **Completed / failed / cancelled** — a separate result for each attempt. If a file was saved but tags, the library index or cleanup could not finish, the row explains which part needs attention.
 - **Click a row** — plays that track from Tidal (uses the streaming path, not the local file).
-- **✕ on a row** — removes that entry from the list (the actual file on disk is **not** deleted).
-- **Clear All** — wipes the entire history list.
+- **✕ on an active row** — requests cancellation. On a finished row, it removes the history entry without deleting the audio file.
+- **Clear finished downloads** — clears completed, failed and cancelled entries while leaving active downloads in the list.
 
 The list is in-memory only — closing the app clears it. Persistent records of which tracks you have downloaded live in the library index (`<downloadFolder>/.tidal-library.json`), which is what powers the ✓ marks in Search and the Library tab.
 
@@ -140,6 +144,8 @@ Albums are shown as a grid (sortable by Artist / Album / Year / Recent). Click a
 - Drag-drop a new image directly onto the cover to update it
 
 DASH-wrapped FLACs (rare unless you have legacy v1.0.0 downloads) save edits to a soft index; running **Remux** in the Library tab finalizes them into proper FLAC.
+
+Check the result after saving. A message may distinguish completed tag writes from a deferred file move or an index update failure. If a file was moved or replaced outside the app while being edited, refresh it before trying again.
 
 ## Player bar
 
@@ -163,16 +169,14 @@ Slides up when you start playback. Layout:
 
 When auto-advance falls past the album, the app continues sequentially through your library (artist → album → track number ordering).
 
-## Audio device picker (Windows)
+## Audio device picker
 
-The speaker icon to the left of the quality badge opens a popover listing your system audio devices. Click one to route playback there (`setSinkId`). Click the gear icon next to the active device for **Device settings**:
+The speaker icon opens your system audio devices. Select an output, then click its gear icon for **Device settings**:
 
-- **Use exclusive mode** — grabs the device exclusively and outputs at the source's native sample rate / bit depth via WASAPI. While exclusive is on, other apps on that device produce no sound.
+- **Use exclusive mode** — requests WASAPI exclusive output on Windows or Core Audio Hog Mode on macOS. Device support and access determine whether the mode can be used; other apps may be unable to use that output while it is held.
 - **Force volume** — locks playback to 100 % so the slider stays out of the bit-perfect signal. Only available when exclusive mode is on.
 
-Exclusive mode requires an app restart to take full effect (Electron's `commandLine` switch must be set before app.ready). Toggling it shows a one-shot toast.
-
-> **macOS:** the toggles are visible but currently no-op — Core Audio "Hog Mode" support is on the roadmap.
+If the device is busy or the mode cannot be opened, close other applications using it or try shared playback. Available formats depend on the output device.
 
 ## Settings reference
 
@@ -180,8 +184,8 @@ The Settings page groups options by purpose. Each section is described below.
 
 ### Account
 
-- **Tidal** — Sign in or sign out via Tidal's OAuth Device Code flow. When signed in, the current account is shown. The browser opens automatically with your one-time code on each new login.
-- **Auto-refresh** — When on, the app silently refreshes your Tidal access token in the background (every five minutes by default). Keep this on so you don't get logged out across launches; the `refresh_token` is preserved even when Tidal omits it from the response.
+- **Tidal** — Sign in through the Tidal sign-in window or sign out. The current account is shown when signed in.
+- **Auto-refresh** — Lets the app renew its Tidal session in the background. Leave this enabled for normal use; an expired or rejected session may still require a new sign-in.
 
 ### Playback
 
@@ -199,7 +203,7 @@ This section sets the requested audio tier for **both playback and downloads**. 
 
 Runs a quick probe against Tidal to see which tiers actually return lossless audio for your account right now. The app fetches two short sample tracks (one from your library, one a global hit) at each tier and reports whether Tidal delivered FLAC or AAC.
 
-This is the diagnostic counterpart to the [quality fallback](#quality-fallback-when-a-track-isnt-available-at-the-requested-tier) above. If a tier comes back as AAC in the probe, downloads at that tier will be **skipped** (the app refuses to save AAC pretending to be lossless). If a tier comes back as 16-bit FLAC when you asked for Max, downloads at that tier will save successfully but **silently downgraded** to 16 bit. Either way, knowing in advance lets you decide whether to lower the Audio quality setting (for fewer skips) or contact Tidal about your subscription state.
+High is **lossy by design**; AAC at this tier is expected and can be downloaded as `.m4a`. AAC returned for a Max or HiFi request is marked as a downgrade. The probe reports only its sampled tracks, so availability for another album may differ. See [quality fallback](#quality-fallback-when-a-track-isnt-available-at-the-requested-tier).
 
 ### Album art quality
 
@@ -215,22 +219,49 @@ Resolution of the album art embedded into downloaded files and shown in the ligh
 
 - **Download location** — Root folder for downloaded audio. Setting this for the first time also initializes the album-art folder to `<downloadPath>/art`.
 - **Album art download location** — Separate folder for full-resolution art saved from the lightbox. If unset, the lightbox download falls back to the audio folder.
-- **Folder structure** — A chip-based builder that defines the subfolder tree under your download location. Click a tag to append (**Album Artist** / **Artist** / **Album** / **Genre** / **Year**), ✕ on the right to remove the last one. The live preview shows what the path will look like with sample data. Affects new downloads only; to re-apply your current rules to existing files, use **Library maintenance → Resync from TIDAL**.
-- **File naming** — Same chip builder for the file name itself. Tags: **Album Artist**, **Artist**, **Track #**, **-** (separator), **Title**. The `.flac` extension is appended automatically.
+- **Folder structure** — Defines folders below the download location. The new-settings default is `{album_artist}/{album}`.
+- **File name** — Defines the filename without its extension. The new-settings default is `{track_number} - {title}`. The correct audio extension, such as `.flac` or `.m4a`, is added automatically.
+
+Existing valid saved rules take precedence over these defaults.
+
+#### Editing and saving naming rules
+
+1. Choose **Edit directly** or **Build with tags** for either field. Both views show the same rule; switching views preserves its tags, text, punctuation and spacing.
+2. Type a rule or insert tags from the controls for that field. **Tag help** lists syntax and examples; **Presets** offers Default, Include year and Include quality.
+3. Check **Path preview**. **Sample track information** changes only the example data, not your rule or actual songs. The multiple-artists example differs when the rule uses **Track artist**.
+4. Select **Save** to apply the rules to future downloads. Leaving with unsaved changes prompts you to save, discard or keep editing.
+
+Unknown tags remain literal text and produce a warning. Characters that cannot be used in filesystem paths are adjusted in the output. Preview the resulting folder and filename before saving.
+
+### Album-type grouping
+
+Enable **Group albums by type** to add `Albums`, `EPs`, `Singles` or `Compilations` to the default folder layout, for example `Album artist/Albums/Album`. **Merge compilations into Albums** puts compilations in `Albums` too.
+
+Saving applies this setting to future downloads. It does not move existing files automatically.
+
+To update existing files, save your naming changes, then open **Group existing library by album type → Preview**. Review current and proposed paths, including skipped files and conflicts, then select **Apply**. This preview uses the saved folder and filename rules; it is separate from the sample-track preview above. Playlist files keep their existing locations. Unknown album types or ambiguous custom folder templates may be skipped.
 
 ### Library maintenance
 
 Actions for keeping your downloaded library tidy. None of them delete audio files.
 
-- **Resync from TIDAL (online)** — Re-fetches every downloaded track's metadata from Tidal and reapplies your current Folder structure + File naming rules. Tags and embedded album art are also refreshed. Requires internet. Use after changing your folder/naming pattern so the existing library matches.
-- **Rebuild from FLAC (offline)** — Reads the `TIDAL_GUID` / `TIDAL_META` Vorbis comments that the app embeds into every downloaded FLAC and rebuilds the library index from them. No network required. Use this after moving files between drives, recovering from a corrupted `.tidal-library.json`, or transferring your library to another machine.
+- **Resync from TIDAL (online)** — Fetches current Tidal metadata and previews tag, folder and filename changes using saved rules. Review the preview before applying. Requires internet and may update embedded album art as well as tags.
+- **Rebuild from FLAC (offline)** — Despite its current label, rebuild reads embedded `TIDAL_GUID` / `TIDAL_META` identity from both FLAC and M4A. It reconstructs the library index from accessible files without a network request. Use it after moving files or recovering an index; missing or damaged identity tags can prevent recovery of some entries.
+
+If a file operation is refused because the library path crosses a symbolic link or junction, use the actual folder path. Review the operation's results for skipped files or unresolved changes.
+
+### Settings recovery and updates
+
+The Settings page reports recovered settings, unsaved changes and recovery-backup failures. If a save fails, keep the page open and use **Retry** or save the naming draft again. A backup warning can mean the main settings file was saved but its recovery copy was not updated.
+
+**Check for updates** checks for a newer version. With the current signing setup, download the appropriate release file and update manually after quitting the app. The **GitHub Star** link below the update check opens the project repository.
 
 ### Reset
 
 Clear cached state without touching your audio files.
 
 - **Reset library data** — Clears your favorites list and the Chromium HTTP cache (which holds Tidal CDN images) in one step. Use this when favorites need a fresh start or when artist profile photos / album art appear stale. Two-step confirmation: the first click turns the button red and waits up to 5 seconds for a second click to actually run.
-- **Reset current settings** — Restores all Settings values to their defaults. Same two-step confirmation. Your downloaded files, library index, and Tidal token are not touched.
+- **Reset current settings** — Restores playback, quality, download paths, album-art options and naming rules to their defaults, and discards unsaved naming changes. It keeps language and auto-refresh preferences, downloaded files, the library index and the Tidal sign-in. Same two-step confirmation.
 
 ## Mouse & keyboard shortcuts
 
@@ -243,7 +274,7 @@ Clear cached state without touching your audio files.
 ## Troubleshooting
 
 **The album art doesn't update after re-download.**
-Open **Settings → Reset → Clear image cache** (2-step confirm). This empties Chromium's HTTP cache so the new image isn't masked by a cached older version.
+Open **Settings → Reset → Reset library data** (two-step confirmation) to clear cached images. This also clears favorites, so use it only if you want both reset.
 
 **Library grid shows the wrong artist photo.**
 Hit **Refresh** in the Library tab — the avatar cache is cleared on every refresh, so the next pass fetches fresh data via canonical artist IDs.
@@ -252,7 +283,7 @@ Hit **Refresh** in the Library tab — the avatar cache is cleared on every refr
 This was a v1.0.1 bug. Update to v1.0.2 or later.
 
 **Exclusive mode does not engage / volume slider doesn't move (Windows).**
-Exclusive mode requires an app restart after first toggling it. If it still doesn't engage, check whether another app holds the device exclusively (some DAWs and Spotify with "exclusive" extensions do). The app will retry up to ~600 ms internally; longer holds will fail.
+Check whether another app holds the device, and try shared playback if exclusive access fails. **Force volume** intentionally locks the slider at full volume while exclusive mode is enabled.
 
 **Empty folders left after deleting an album.**
 Hit **Refresh** in the Library tab — you'll be prompted to delete *truly empty* folders only (folders that still contain images or other files are left alone).
@@ -261,9 +292,9 @@ Hit **Refresh** in the Library tab — you'll be prompted to delete *truly empty
 The first download prompts you for a folder override; subsequent downloads from the same canonical Tidal artist ID re-use it silently. If you ever delete the artist folder entirely, the next download will prompt again so you can re-confirm.
 
 **A track downloads as `.flac.partial`.**
-The download was interrupted. The next attempt will replace the partial atomically. If a partial persists across sessions, delete it manually.
+Check the download's result in **Downloads** before retrying. An interrupted operation may report leftover files or cleanup still in progress; do not remove a file while a download is active.
 
 **The login modal won't go away.**
-Make sure your network can reach `auth.tidal.com` and `api.tidal.com`. The app polls every 2 seconds during the device-code flow; check **Settings → Reset → Clear all favorites** is *not* what you want — use the Logout button on the Settings → Tidal section instead.
+Complete sign-in in the Tidal window and check that your network can reach Tidal. If Tidal rejects the sign-in, follow the provider's message. Clearing favorites or resetting naming rules will not resolve an authentication failure.
 
 If something else breaks, please open an issue on the [Issues page](../../../issues) with the version, OS, steps to reproduce, and console output if available.

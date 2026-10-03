@@ -19,9 +19,9 @@ assignees: ''
 ## Actual behavior
 
 ## Environment
-- App version: <!-- Settings → About footer (e.g. 1.0.2) -->
+- App version: <!-- At the bottom of Settings (e.g. 1.0.5) -->
 - OS + version: <!-- e.g. Windows 11 23H2 / macOS 14.4 -->
-- Tidal subscription tier: <!-- HiFi / HiFi Plus -->
+- Requested audio quality: <!-- Max / HiFi / High; subscription plan if relevant -->
 - Audio device: <!-- if relevant — DAC / built-in / Bluetooth, exclusive mode on or off -->
 
 ## Console output
