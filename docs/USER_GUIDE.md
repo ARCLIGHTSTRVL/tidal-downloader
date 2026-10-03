@@ -39,27 +39,27 @@ Keep **Auto-refresh** enabled in Settings to let the app renew its session in th
 
 ## Audio quality
 
-Tidal serves audio in two manifest formats:
+Choose the quality to request in Settings:
 
-| Quality | Manifest | What you get |
-|---------|----------|--------------|
-| **Max** (HI_RES_LOSSLESS / HI_RES) | DASH | 24-bit FLAC at the album's native sample rate (typically 44.1 / 48 / 96 / 192 kHz). The app downloads the segments and remuxes them into a standard FLAC file losslessly (`-c:a copy`). |
-| **HiFi** (LOSSLESS) | BTS (single URL) | 16-bit / 44.1 kHz FLAC, downloaded as one file. |
-| **High** | BTS (single URL) | AAC, saved as `.m4a` when High is selected. AAC returned for a lossless request is handled separately. |
+| Setting | Requested quality | Possible fallback |
+|---------|-------------------|-------------------|
+| **Max** | FLAC up to 24-bit / 192 kHz | Lower-resolution FLAC, then High AAC |
+| **HiFi** | FLAC at 16-bit / 44.1 kHz | High AAC |
+| **High** | AAC at 320 kbps | — |
 
 **Settings → Audio quality** controls both playback and download. Max takes ~1–3 s on first play because the app assembles DASH segments before sending to ffmpeg; HiFi plays instantly when Tidal serves it as 16-bit FLAC.
 
 ### Quality fallback when a track isn't available at the requested tier
 
-Tidal does not always deliver the tier you asked for. The app handles this by stepping down through the lossless ladder:
+The app tries the selected tier and then lower tiers when needed. Max and HiFi both allow a final High/AAC fallback:
 
-- **Max requested → HI_RES_LOSSLESS / HI_RES delivered**: 24-bit FLAC at the album's native sample rate. ✅
-- **Max requested → only LOSSLESS delivered**: the file is saved as 16-bit / 44.1 kHz FLAC (HiFi tier). The download still goes through, but at the lower native bit depth that Tidal made available. This is a real, lossless FLAC — just not 24-bit.
-- **HiFi requested → only LOSSLESS delivered**: 16-bit FLAC, exactly as expected.
-- **Either tier requested → only AAC available**: the app **does not save** an AAC pretending to be lossless. The track is skipped; only real FLAC reaches your library. (The library "✓" mark also won't appear, so you can re-attempt later from a different account or after a Tidal-side fix.)
-- **High requested**: AAC is what you asked for; saved as `.m4a` without re-encoding the audio.
+- **Max requested, high-resolution FLAC available**: saves the available FLAC at its supplied bit depth and sample rate.
+- **Max requested, only HiFi FLAC available**: saves the lower-resolution FLAC.
+- **HiFi requested, lossless available**: saves FLAC.
+- **Max or HiFi requested, only High AAC available**: the app can continue at High and save `.m4a`. This is a lossy download even though the original setting requested lossless audio.
+- **High requested**: AAC is expected and is saved as `.m4a`.
 
-In short, you can't get a worse-than-FLAC file from a HiFi/Max download, but you may get FLAC at a lower bit depth than you wanted (silent downgrade by Tidal). Use **Settings → Check available quality** to find out in advance which tiers your account can actually fetch lossless audio at.
+FLAC is saved as `.flac` and AAC as `.m4a`, without re-encoding the audio. Check the quality shown for the actual track. **Settings → Check available quality** samples what your account can fetch; another track may return a different quality.
 
 ## Album art quality
 
@@ -91,7 +91,7 @@ Click any album to open its **Album page** with a large cover (which you can hov
 ## Downloading
 
 - **Single track** — click the download icon next to a track.
-- **Whole album** — click **Download All** on the album page. Tracks already downloaded (✓) are skipped automatically.
+- **Whole album** — click the download icon below the album information. Tracks already downloaded (✓) are skipped automatically.
 - **Stop** — a stop button appears next to the progress bar; cancels the album-level download or an individual track.
 - **Progress** — the progress bar increases monotonically across an album, including resume scenarios. No flicker between tracks.
 
@@ -174,7 +174,7 @@ When auto-advance falls past the album, the app continues sequentially through y
 The speaker icon opens your system audio devices. Select an output, then click its gear icon for **Device settings**:
 
 - **Use exclusive mode** — requests WASAPI exclusive output on Windows or Core Audio Hog Mode on macOS. Device support and access determine whether the mode can be used; other apps may be unable to use that output while it is held.
-- **Force volume** — locks playback to 100 % so the slider stays out of the bit-perfect signal. Only available when exclusive mode is on.
+- **Force volume** — locks the app's playback volume to 100 %. Only available when exclusive mode is on.
 
 If the device is busy or the mode cannot be opened, close other applications using it or try shared playback. Available formats depend on the output device.
 
@@ -239,7 +239,7 @@ Enable **Group albums by type** to add `Albums`, `EPs`, `Singles` or `Compilatio
 
 Saving applies this setting to future downloads. It does not move existing files automatically.
 
-To update existing files, save your naming changes, then open **Group existing library by album type → Preview**. Review current and proposed paths, including skipped files and conflicts, then select **Apply**. This preview uses the saved folder and filename rules; it is separate from the sample-track preview above. Playlist files keep their existing locations. Unknown album types or ambiguous custom folder templates may be skipped.
+To group existing files by album type, save your naming changes, then open **Group existing library by album type → Preview**. Review current and proposed paths, including skipped files and conflicts, then select **Apply**. This preview uses the saved folder and filename rules; it is separate from the sample-track preview above. Playlist files keep their existing locations. Unknown album types or ambiguous custom folder templates may be skipped.
 
 ### Library maintenance
 
