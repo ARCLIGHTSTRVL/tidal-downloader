@@ -13,21 +13,69 @@ Tidal 음악을 다운로드하고, 재생하고, 폴더와 태그를 정리하�
 ![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS-lightgrey?style=flat-square)
 [![License](https://img.shields.io/badge/license-Proprietary-blue?style=flat-square)](LICENSE)
 
-</div>
-
 ## 다운로드
 
 ### v1.0.5 (Windows + macOS)
 
 이번 버전은 이름 규칙 편집, 앨범 유형별 폴더 분류, 라이브러리 정렬을 개선했습니다. 자세한 내용은 [릴리스 안내](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/tag/v1.0.5)와 [변경 기록](CHANGELOG.md)을 참고하세요.
 
-| 플랫폼 | 다운로드 |
-|--------|------------|
-| Windows 10/11 (x64) | [설치 파일 .exe](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.5/TIDAL-DOWNLOADER-Setup-1.0.5.exe) |
-| macOS 12+ Apple Silicon (arm64) | [DMG](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.5/TIDAL-DOWNLOADER-1.0.5-arm64.dmg) · [ZIP](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.5/TIDAL-DOWNLOADER-1.0.5-arm64-mac.zip) |
-| macOS 12+ Intel (x64) | [DMG](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.5/TIDAL-DOWNLOADER-1.0.5.dmg) · [ZIP](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.5/TIDAL-DOWNLOADER-1.0.5-mac.zip) |
+<table align="center">
+  <thead>
+    <tr>
+      <th align="center">플랫폼</th>
+      <th align="center">다운로드</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center">Windows 10/11 (x64)</td>
+      <td align="center"><a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.5/TIDAL-DOWNLOADER-Setup-1.0.5.exe">설치 파일 .exe</a></td>
+    </tr>
+    <tr>
+      <td align="center">macOS 12+ Apple Silicon (arm64)</td>
+      <td align="center"><a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.5/TIDAL-DOWNLOADER-1.0.5-arm64.dmg">DMG</a> · <a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.5/TIDAL-DOWNLOADER-1.0.5-arm64-mac.zip">ZIP</a></td>
+    </tr>
+    <tr>
+      <td align="center">macOS 12+ Intel (x64)</td>
+      <td align="center"><a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.5/TIDAL-DOWNLOADER-1.0.5.dmg">DMG</a> · <a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.5/TIDAL-DOWNLOADER-1.0.5-mac.zip">ZIP</a></td>
+    </tr>
+  </tbody>
+</table>
 
 Intel용 빌드는 Apple Silicon의 Rosetta에서 실행을 확인했습니다. Intel Mac 실기 검증은 하지 않았습니다.
+
+</div>
+
+## 스크린샷
+
+일부 스크린샷은 이전 버전의 설정 화면입니다. 현재 이름 규칙 편집 방법은 [사용자 가이드](docs/USER_GUIDE.md#download)를 참고하세요.
+
+<table>
+  <tr>
+    <td><img src="docs/images/library.png" alt="라이브러리 — 아티스트·앨범 그리드와 플레이리스트" /></td>
+    <td><img src="docs/images/library-list.png" alt="라이브러리 리스트 뷰 — 트랙별 음질 (FLAC 96 kHz / 24비트)" /></td>
+  </tr>
+  <tr>
+    <td><img src="docs/images/search-home.png" alt="검색 홈 — 라이브러리 통계와 즐겨찾기" /></td>
+    <td><img src="docs/images/search.png" alt="검색 결과 — 앨범·플레이리스트·트랙" /></td>
+  </tr>
+  <tr>
+    <td><img src="docs/images/album-download.png" alt="앨범 다운로드 진행 — 트랙 3개 동시" /></td>
+    <td><img src="docs/images/album-art.png" alt="원본 해상도 앨범 아트 라이트박스" /></td>
+  </tr>
+  <tr>
+    <td><img src="docs/images/now-playing.png" alt="재생 화면 — 앨범 배경 앰비언트" /></td>
+    <td><img src="docs/images/album-info.png" alt="앨범 정보 오버레이 — Tidal 메타데이터와 트랙 목록" /></td>
+  </tr>
+  <tr>
+    <td><img src="docs/images/exclusive-mode.png" alt="장치별 exclusive 모드(비트퍼펙트) 옵션" /></td>
+    <td><img src="docs/images/tag-editor.png" alt="일괄 태그 편집기와 파일 정보" /></td>
+  </tr>
+  <tr>
+    <td><img src="docs/images/downloads.png" alt="다운로드 패널 — 진행률과 완료 목록" /></td>
+    <td><img src="docs/images/settings-korean.png" alt="한국어 설정 화면 (English/한국어 UI)" /></td>
+  </tr>
+</table>
 
 ## 요구 사항
 
@@ -79,45 +127,6 @@ Mac 배포본은 Apple Developer ID 서명·공증을 거치지 않아 Gatekeepe
 - 여러 곡의 태그와 앨범 아트 일괄 편집
 - 로컬 음악 재생, 셔플·반복과 출력 장치 선택
 - 설정에서 한국어·영어 전환
-
-## 스크린샷
-
-<table>
-  <tr>
-    <td><img src="docs/images/library.png" alt="아티스트와 앨범별로 정리된 라이브러리" /></td>
-    <td><img src="docs/images/tag-editor.png" alt="앨범과 곡 정보를 수정하는 태그 편집기" /></td>
-  </tr>
-</table>
-
-<details>
-<summary>스크린샷 더 보기</summary>
-
-<table>
-  <tr>
-    <td><img src="docs/images/library-list.png" alt="라이브러리 리스트 보기" /></td>
-    <td><img src="docs/images/search-home.png" alt="검색 홈과 즐겨찾기" /></td>
-  </tr>
-  <tr>
-    <td><img src="docs/images/search.png" alt="검색 결과" /></td>
-    <td><img src="docs/images/album-download.png" alt="앨범 다운로드 진행 화면" /></td>
-  </tr>
-  <tr>
-    <td><img src="docs/images/album-art.png" alt="앨범 아트 보기" /></td>
-    <td><img src="docs/images/now-playing.png" alt="현재 재생 화면" /></td>
-  </tr>
-  <tr>
-    <td><img src="docs/images/album-info.png" alt="앨범 정보와 곡 목록" /></td>
-    <td><img src="docs/images/exclusive-mode.png" alt="오디오 출력 장치 설정" /></td>
-  </tr>
-  <tr>
-    <td><img src="docs/images/downloads.png" alt="다운로드 진행 상태와 결과" /></td>
-    <td><img src="docs/images/settings-korean.png" alt="한국어 설정 화면" /></td>
-  </tr>
-</table>
-
-일부 스크린샷은 이전 버전의 설정 화면입니다. 현재 이름 규칙 편집 방법은 [이름 규칙 가이드](docs/USER_GUIDE.md#download)를 참고하세요.
-
-</details>
 
 ## 음질
 

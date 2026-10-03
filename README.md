@@ -13,21 +13,69 @@ Download music from Tidal, play your collection, and organize folders and tags.<
 ![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS-lightgrey?style=flat-square)
 [![License](https://img.shields.io/badge/license-Proprietary-blue?style=flat-square)](LICENSE)
 
-</div>
-
 ## Download
 
 ### v1.0.5 (Windows + macOS)
 
 This version improves naming rules, album-type folders and library sorting. See the [release notes](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/tag/v1.0.5) or [changelog](CHANGELOG.md) for details.
 
-| Platform | Download |
-|----------|----------|
-| Windows 10/11 (x64) | [Setup .exe](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.5/TIDAL-DOWNLOADER-Setup-1.0.5.exe) |
-| macOS 12+ Apple Silicon (arm64) | [DMG](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.5/TIDAL-DOWNLOADER-1.0.5-arm64.dmg) · [ZIP](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.5/TIDAL-DOWNLOADER-1.0.5-arm64-mac.zip) |
-| macOS 12+ Intel (x64) | [DMG](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.5/TIDAL-DOWNLOADER-1.0.5.dmg) · [ZIP](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.5/TIDAL-DOWNLOADER-1.0.5-mac.zip) |
+<table align="center">
+  <thead>
+    <tr>
+      <th align="center">Platform</th>
+      <th align="center">Download</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center">Windows 10/11 (x64)</td>
+      <td align="center"><a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.5/TIDAL-DOWNLOADER-Setup-1.0.5.exe">Setup .exe</a></td>
+    </tr>
+    <tr>
+      <td align="center">macOS 12+ Apple Silicon (arm64)</td>
+      <td align="center"><a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.5/TIDAL-DOWNLOADER-1.0.5-arm64.dmg">DMG</a> · <a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.5/TIDAL-DOWNLOADER-1.0.5-arm64-mac.zip">ZIP</a></td>
+    </tr>
+    <tr>
+      <td align="center">macOS 12+ Intel (x64)</td>
+      <td align="center"><a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.5/TIDAL-DOWNLOADER-1.0.5.dmg">DMG</a> · <a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.5/TIDAL-DOWNLOADER-1.0.5-mac.zip">ZIP</a></td>
+    </tr>
+  </tbody>
+</table>
 
 The Intel build was tested under Rosetta on Apple Silicon, not on Intel Mac hardware.
+
+</div>
+
+## Screenshots
+
+Some screenshots show an earlier version of Settings. See the [User Guide](docs/USER_GUIDE.md#download) for the current naming controls.
+
+<table>
+  <tr>
+    <td><img src="docs/images/library.png" alt="Library — artist and album grid with playlists" /></td>
+    <td><img src="docs/images/library-list.png" alt="Library list view with per-track quality (FLAC 96 kHz / 24-bit)" /></td>
+  </tr>
+  <tr>
+    <td><img src="docs/images/search-home.png" alt="Search home with library stats and favorites" /></td>
+    <td><img src="docs/images/search.png" alt="Search results — albums, playlists, and tracks" /></td>
+  </tr>
+  <tr>
+    <td><img src="docs/images/album-download.png" alt="Album download in progress — three tracks in parallel" /></td>
+    <td><img src="docs/images/album-art.png" alt="Full-resolution album art lightbox" /></td>
+  </tr>
+  <tr>
+    <td><img src="docs/images/now-playing.png" alt="Now Playing view with ambient album backdrop" /></td>
+    <td><img src="docs/images/album-info.png" alt="Album info overlay with Tidal metadata and track list" /></td>
+  </tr>
+  <tr>
+    <td><img src="docs/images/exclusive-mode.png" alt="Per-device exclusive mode (bit-perfect) options" /></td>
+    <td><img src="docs/images/tag-editor.png" alt="Bulk tag editor with file info" /></td>
+  </tr>
+  <tr>
+    <td><img src="docs/images/downloads.png" alt="Downloads panel — active progress and completed tracks" /></td>
+    <td><img src="docs/images/settings-korean.png" alt="Settings in Korean (English/한국어 UI)" /></td>
+  </tr>
+</table>
 
 ## Requirements
 
@@ -79,45 +127,6 @@ The [User Guide](docs/USER_GUIDE.md) covers playlists, naming examples and libra
 - Edit tags and album art for multiple tracks at once.
 - Play local music with shuffle, repeat and a choice of audio output device.
 - Switch between English and Korean in Settings.
-
-## Screenshots
-
-<table>
-  <tr>
-    <td><img src="docs/images/library.png" alt="Library with artist and album groups" /></td>
-    <td><img src="docs/images/tag-editor.png" alt="Album and track metadata in the tag editor" /></td>
-  </tr>
-</table>
-
-<details>
-<summary>More screenshots</summary>
-
-<table>
-  <tr>
-    <td><img src="docs/images/library-list.png" alt="Library list view" /></td>
-    <td><img src="docs/images/search-home.png" alt="Search home and favorites" /></td>
-  </tr>
-  <tr>
-    <td><img src="docs/images/search.png" alt="Search results" /></td>
-    <td><img src="docs/images/album-download.png" alt="Album download in progress" /></td>
-  </tr>
-  <tr>
-    <td><img src="docs/images/album-art.png" alt="Album art viewer" /></td>
-    <td><img src="docs/images/now-playing.png" alt="Now Playing view" /></td>
-  </tr>
-  <tr>
-    <td><img src="docs/images/album-info.png" alt="Album information and track list" /></td>
-    <td><img src="docs/images/exclusive-mode.png" alt="Audio output device settings" /></td>
-  </tr>
-  <tr>
-    <td><img src="docs/images/downloads.png" alt="Download progress and results" /></td>
-    <td><img src="docs/images/settings-korean.png" alt="Settings in Korean" /></td>
-  </tr>
-</table>
-
-Some screenshots show an earlier version of Settings. See the [naming guide](docs/USER_GUIDE.md#download) for the current controls.
-
-</details>
 
 ## Audio quality
 
