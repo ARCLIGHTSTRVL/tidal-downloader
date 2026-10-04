@@ -17,7 +17,7 @@ Tidal 음악을 다운로드하고, 재생하고, 폴더와 태그를 정리하�
 
 ### v1.0.5 (Windows + macOS)
 
-이번 버전은 이름 규칙 편집, 앨범 유형별 폴더 분류, 라이브러리 정렬을 개선했습니다. 자세한 내용은 [릴리스 안내](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/tag/v1.0.5)와 [변경 기록](CHANGELOG.md)을 참고하세요.
+이번 버전은 이름 규칙 편집, 앨범 유형별 폴더 분류, 라이브러리 정렬을 개선했습니다. 자세한 내용은 [릴리스 안내](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/tag/v1.0.5)와 [변경 기록](CHANGELOG.ko.md)을 참고하세요.
 
 <table align="center">
   <thead>
@@ -48,7 +48,7 @@ Intel용 빌드는 Apple Silicon의 Rosetta에서 실행을 확인했습니다. 
 
 ## 스크린샷
 
-일부 스크린샷은 이전 버전의 설정 화면입니다. 현재 이름 규칙 편집 방법은 [사용자 가이드](docs/USER_GUIDE.md#download)를 참고하세요.
+일부 스크린샷은 이전 버전의 설정 화면입니다. 현재 이름 규칙 편집 방법은 [사용자 가이드](docs/USER_GUIDE.ko.md#download-naming)를 참고하세요.
 
 <table>
   <tr>
@@ -116,7 +116,7 @@ Mac 배포본은 Apple Developer ID 서명·공증을 거치지 않아 Gatekeepe
 
 새 설정의 기본값은 `앨범 아티스트/앨범` 폴더와 `트랙 번호 - 제목` 파일명입니다. 기존에 저장한 유효한 규칙은 그대로 사용합니다. 규칙을 바꾸고 저장하면 이후 다운로드부터 적용됩니다. 기존 파일을 앨범 유형별로 분류하려면 **기존 라이브러리 앨범 분류 → 미리보기**에서 예정 경로를 확인한 뒤 **적용**을 눌러 주세요.
 
-플레이리스트 사용법, 이름 규칙 예시와 라이브러리 관리 방법은 [사용자 가이드](docs/USER_GUIDE.md)에 있습니다.
+플레이리스트 사용법, 이름 규칙 예시와 라이브러리 관리 방법은 [사용자 가이드](docs/USER_GUIDE.ko.md)에 있습니다.
 
 ## 기능
 

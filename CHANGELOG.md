@@ -1,5 +1,7 @@
 # Changelog
 
+[English](CHANGELOG.md) · [한국어](CHANGELOG.ko.md) | [User Guide](docs/USER_GUIDE.md) · [사용자 가이드](docs/USER_GUIDE.ko.md)
+
 All notable user-visible changes to TIDAL DOWNLOADER.
 
 ## v1.0.5 — 2026-10-04
@@ -38,10 +40,13 @@ See the [v1.0.4 release notes](https://github.com/ARCLIGHTSTRVL/tidal-downloader
 ## v1.0.3 — 2026-08-14
 
 ### New
-- **macOS support** — native Apple Silicon and Intel builds with bit-perfect **Core Audio Hog Mode** exclusive output (device hog + nominal sample-rate switching), macOS-native titlebar and menu-bar tray, full library path support. Supersedes `v1.0.2-beta`; the Intel build now ships the correct Intel ffmpeg (the beta's Intel build could not download or convert).
-- **Playlist system** — browse Tidal playlists (search results, your own + favorites, recent), open any playlist by pasting its link or UUID, batch-download into `playlists/<name>/` with playlist track order and cover art, and manage playlists as a dedicated Library group with per-playlist/per-track delete, misplaced-album detection, and duplicate detection.
-- **Every Tidal quality tier supported** — Max (24-bit FLAC up to 192 kHz), HiFi (16/44.1 FLAC), and now High (AAC 320 kbps) saved as proper `.m4a` with the same embedded identity, checkmarks, and offline Rebuild support as FLAC.
-- **HiFi now really returns 16-bit lossless** — earlier builds signed in with a client tier that Tidal silently downgraded to AAC, so a HiFi request came back as `.m4a` and only Max produced FLAC. Login now uses the TV client (PKCE), the only tier that serves true 16-bit / 44.1 kHz FLAC.
+
+- **macOS support** — native Apple Silicon and Intel builds with **Core Audio Hog Mode** exclusive output and device sample-rate switching, a macOS-native titlebar and menu-bar tray, and library path support. Supersedes `v1.0.2-beta`; the Intel build now ships the correct Intel ffmpeg, fixing downloads and conversion in that build.
+- **Playlist browsing** — find Tidal playlists in search, your own and favorite playlists, or recently opened playlists. Paste a playlist link or UUID into the search bar to open it directly.
+- **Playlist downloads** — save a whole playlist to `playlists/<name>/` with playlist-order filenames and a `folder.jpg` cover. A folder-name prompt separates playlists that share a name.
+- **Playlists in the Library** — a dedicated group in list and grid views, with per-playlist and per-track deletion. Detect misplaced album folders inside `playlists/` and move them back; identify duplicates using embedded IDs and file-byte comparisons.
+- **Max, HiFi and High downloads** — Max (24-bit FLAC up to 192 kHz), HiFi (16-bit / 44.1 kHz FLAC), and now High (AAC 320 kbps) saved as `.m4a` with embedded identity, checkmarks, and offline Rebuild support.
+- **HiFi login fix** — changed the login client to address HiFi requests returning AAC instead of the requested 16-bit / 44.1 kHz FLAC.
 - **Update notifications** (Windows + macOS) — background version checks with a toast linking to the newest release, plus a manual check in Settings.
 - **English / 한국어** — switch the UI language instantly in Settings.
 - **Parallel album downloads** — album tracks download 3 at a time on both platforms.
@@ -49,16 +54,30 @@ See the [v1.0.4 release notes](https://github.com/ARCLIGHTSTRVL/tidal-downloader
 - **Space bar** toggles play/pause while the app is focused (never while typing).
 
 ### Improved / Fixed
+
 - Search navigation is symmetric — back from an album/artist restores your results; clicking a track no longer wipes them.
-- Downloads panel ✕ actually cancels an in-progress download; Clear removes only finished entries.
+- Downloads panel ✕ cancels an in-progress download; Clear removes only completed or failed entries. Cancellation is also checked after transfer and validation steps, before publishing the file.
+- Fixed a duplicate space-bar handler that toggled play/pause twice per press. Holding the key no longer repeats the toggle.
 - An expired Tidal session shows an error banner instead of pretending there are no results.
-- Player overlay: correct per-track artists, ALBUM INFO follows the current song, the queue follows the current album/playlist, album art can no longer stick to the wrong cover.
-- Library toolbar stays pinned while scrolling; failed deletes show a summary instead of silently vanishing from the UI; unreadable folders show a warning banner instead of masquerading as an empty library.
+- Update-check failures show concise English or Korean guidance for connection problems, missing update information or other errors, replacing raw HTTP responses, stack traces and local paths in notifications and Settings.
+- Player overlay: correct per-track artists, ALBUM INFO and the queue follow the current song's album or playlist, and album changes no longer retain the previous cover. Closing the overlay also has a corrected rotation animation.
+- Library toolbar stays pinned while scrolling, with consistent spacing in the playlist grid. Unreadable folders show a warning banner instead of appearing to be an empty library.
+- Failed deletes show a summary and keep failed items visible in the Library and search results.
+- Library grouping uses artist IDs, album IDs and folders, and playlist UUIDs to separate same-name entries.
 - Added embedded-identity checks for downloaded-✓ marks, helping recognize renamed or retagged files. Some legacy indexed files can still match by title when embedded identity is not required.
-- Settings polish: consistent controls, Reset no longer wipes language/update preferences, hold-to-delete requires a real 1-second hold.
+- Settings polish: consistent controls, Reset no longer wipes language or auto-refresh preferences, hold-to-delete requires a real 1-second hold.
 
 ### Reliability
-- Fifty-plus external review rounds across the download pipeline, delete paths, and the library index: atomic per-attempt temp files and publishes (a failed re-download can never damage an existing file), a three-stage integrity gate on every download (magic bytes → parser → real ffmpeg decode), mutual exclusion between downloads and library maintenance, proof-based recursive deletes (no symlink/junction traversal, unverified content is never deleted), atomic index saves, and offline index Rebuild from the identity tags embedded in FLAC and M4A files.
+
+- Direct downloads follow redirects and reject HTTP errors or transfers shorter than the declared size. File-signature checks, metadata parsing and an ffmpeg first-frame decode check run before a download is accepted.
+- Downloads use a separate temporary file for each attempt. File ownership and collision checks choose a suffixed filename when an existing destination cannot be replaced as the same track.
+- DASH remux runs before the download is published; a remux failure reports a failed download. In-place FLAC remux no longer deletes the original before attempting replacement.
+- Downloads and library maintenance are coordinated so file moves, reorganizing and Rebuild do not run alongside active downloads.
+- Deletion checks the selected files and library boundaries, refuses symlink/junction traversal, and leaves unverified content in place. Only deleted files are removed from the index.
+- Library index saves write and validate a temporary copy before replacing the previous index; save failures are reported.
+- Offline Rebuild reads identity tags from FLAC and M4A files. It retains existing records for files it cannot rebuild unless the file is confirmed missing.
+
+See the [v1.0.3 release notes](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/tag/v1.0.3) for the original downloads and installation notes.
 
 ## v1.0.2 — 2026-05-01
 

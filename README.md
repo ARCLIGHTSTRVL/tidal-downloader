@@ -48,7 +48,7 @@ The Intel build was tested under Rosetta on Apple Silicon, not on Intel Mac hard
 
 ## Screenshots
 
-Some screenshots show an earlier version of Settings. See the [User Guide](docs/USER_GUIDE.md#download) for the current naming controls.
+Some screenshots show an earlier version of Settings. See the [User Guide](docs/USER_GUIDE.md#download-naming) for the current naming controls.
 
 <table>
   <tr>
