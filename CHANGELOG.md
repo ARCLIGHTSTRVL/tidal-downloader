@@ -4,6 +4,13 @@
 
 All notable user-visible changes to TIDAL DOWNLOADER.
 
+## v1.0.6
+
+- Fix a blank console that could appear when starting or seeking streamed or downloaded music on Windows.
+- Make the Tag Editor's album sort tooltip and menu follow the English/Korean language setting without changing the selected sort order.
+
+See the [v1.0.6 release notes](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/tag/v1.0.6) for downloads and update guidance.
+
 ## v1.0.5 — 2026-10-04
 
 ### Improved

@@ -15,9 +15,9 @@ Tidal 음악을 다운로드하고, 재생하고, 폴더와 태그를 정리하�
 
 ## 다운로드
 
-### v1.0.5 (Windows + macOS)
+### v1.0.6 (Windows + macOS)
 
-이번 버전은 이름 규칙 편집, 앨범 유형별 폴더 분류, 라이브러리 정렬을 개선했습니다. 자세한 내용은 [릴리스 안내](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/tag/v1.0.5)와 [변경 기록](CHANGELOG.ko.md)을 참고하세요.
+이번 버전은 Windows 재생 중 별도 콘솔 창이 뜨는 문제와 태그 편집기의 앨범 정렬 메뉴가 언어 설정을 따르지 않던 문제를 수정했습니다. 자세한 내용은 [릴리스 안내](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/tag/v1.0.6)와 [변경 기록](CHANGELOG.ko.md)을 참고하세요.
 
 <table align="center">
   <thead>
@@ -29,15 +29,15 @@ Tidal 음악을 다운로드하고, 재생하고, 폴더와 태그를 정리하�
   <tbody>
     <tr>
       <td align="center">Windows 10/11 (x64)</td>
-      <td align="center"><a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.5/TIDAL-DOWNLOADER-Setup-1.0.5.exe">설치 파일 .exe</a></td>
+      <td align="center"><a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.6/TIDAL-DOWNLOADER-Setup-1.0.6.exe">설치 파일 .exe</a></td>
     </tr>
     <tr>
       <td align="center">macOS 12+ Apple Silicon (arm64)</td>
-      <td align="center"><a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.5/TIDAL-DOWNLOADER-1.0.5-arm64.dmg">DMG</a> · <a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.5/TIDAL-DOWNLOADER-1.0.5-arm64-mac.zip">ZIP</a></td>
+      <td align="center"><a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.6/TIDAL-DOWNLOADER-1.0.6-arm64.dmg">DMG</a> · <a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.6/TIDAL-DOWNLOADER-1.0.6-arm64-mac.zip">ZIP</a></td>
     </tr>
     <tr>
       <td align="center">macOS 12+ Intel (x64)</td>
-      <td align="center"><a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.5/TIDAL-DOWNLOADER-1.0.5.dmg">DMG</a> · <a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.5/TIDAL-DOWNLOADER-1.0.5-mac.zip">ZIP</a></td>
+      <td align="center"><a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.6/TIDAL-DOWNLOADER-1.0.6.dmg">DMG</a> · <a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.6/TIDAL-DOWNLOADER-1.0.6-mac.zip">ZIP</a></td>
     </tr>
   </tbody>
 </table>
