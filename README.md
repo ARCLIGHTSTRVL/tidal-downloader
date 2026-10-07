@@ -102,7 +102,7 @@ Mac builds are ad-hoc signed without an Apple Developer ID signature or notariza
 
 ### Updating from an earlier version
 
-If you are using v1.0.7 or earlier, use the downloads above or open [GitHub Releases](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases) directly in your browser to update.
+If you are using v1.0.6 or earlier, use the downloads above or open [GitHub Releases](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases) directly in your browser to update.
 
 The app checks for new versions and shows a notification at the bottom right. In v1.0.7 and later, select **Official releases** in that notification to open GitHub Releases in your browser, then download the file for your OS. You can also use **Settings → Check for updates**.
 
