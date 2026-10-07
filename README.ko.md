@@ -15,9 +15,9 @@ Tidal 음악을 다운로드하고, 재생하고, 폴더와 태그를 정리하�
 
 ## 다운로드
 
-### v1.0.6 (Windows + macOS)
+### v1.0.7 (Windows + macOS)
 
-이번 버전은 Windows 재생 중 별도 콘솔 창이 뜨는 문제와 태그 편집기의 앨범 정렬 메뉴가 언어 설정을 따르지 않던 문제를 수정했습니다. 자세한 내용은 [릴리스 안내](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/tag/v1.0.6)와 [변경 기록](CHANGELOG.ko.md)을 참고하세요.
+업데이트 알림에서 GitHub Releases를 열어 직접 다운로드하고 설치하도록 바꿨습니다. 버전 확인과 새 버전 알림은 계속 사용할 수 있습니다. 자세한 내용은 [릴리스 안내](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/tag/v1.0.7)와 [변경 기록](CHANGELOG.ko.md)을 참고하세요.
 
 <table align="center">
   <thead>
@@ -29,15 +29,15 @@ Tidal 음악을 다운로드하고, 재생하고, 폴더와 태그를 정리하�
   <tbody>
     <tr>
       <td align="center">Windows 10/11 (x64)</td>
-      <td align="center"><a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.6/TIDAL-DOWNLOADER-Setup-1.0.6.exe">설치 파일 .exe</a></td>
+      <td align="center"><a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.7/TIDAL-DOWNLOADER-Setup-1.0.7.exe">설치 파일 .exe</a></td>
     </tr>
     <tr>
       <td align="center">macOS 12+ Apple Silicon (arm64)</td>
-      <td align="center"><a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.6/TIDAL-DOWNLOADER-1.0.6-arm64.dmg">DMG</a> · <a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.6/TIDAL-DOWNLOADER-1.0.6-arm64-mac.zip">ZIP</a></td>
+      <td align="center"><a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.7/TIDAL-DOWNLOADER-1.0.7-arm64.dmg">DMG</a> · <a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.7/TIDAL-DOWNLOADER-1.0.7-arm64-mac.zip">ZIP</a></td>
     </tr>
     <tr>
       <td align="center">macOS 12+ Intel (x64)</td>
-      <td align="center"><a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.6/TIDAL-DOWNLOADER-1.0.6.dmg">DMG</a> · <a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.6/TIDAL-DOWNLOADER-1.0.6-mac.zip">ZIP</a></td>
+      <td align="center"><a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.7/TIDAL-DOWNLOADER-1.0.7.dmg">DMG</a> · <a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.7/TIDAL-DOWNLOADER-1.0.7-mac.zip">ZIP</a></td>
     </tr>
   </tbody>
 </table>
@@ -98,11 +98,15 @@ Intel용 빌드는 Apple Silicon의 Rosetta에서 실행을 확인했습니다. 
 2. DMG를 열고 **TIDAL DOWNLOADER**를 **응용 프로그램**으로 끌어 넣습니다. 업데이트라면 기존 앱을 종료한 뒤 대치합니다.
 3. 설치용 디스크를 꺼낸 뒤 응용 프로그램 폴더에서 앱을 실행합니다. ZIP을 받았다면 압축을 푼 뒤 앱을 응용 프로그램 폴더로 옮기면 됩니다.
 
-Mac 배포본은 Apple Developer ID 서명·공증을 거치지 않아 Gatekeeper 기본 검사에서 차단됩니다. 실행을 허용하려면 **시스템 설정 → 개인정보 보호 및 보안 → 그래도 열기**를 선택하세요. Monterey에서는 **시스템 환경설정 → 보안 및 개인 정보 보호**에 있습니다.
+Mac 배포본은 ad-hoc 서명되며 Apple Developer ID 서명·공증을 거치지 않아 Gatekeeper 기본 검사에서 차단됩니다. 실행을 허용하려면 **시스템 설정 → 개인정보 보호 및 보안 → 그래도 열기**를 선택하세요. Monterey에서는 **시스템 환경설정 → 보안 및 개인 정보 보호**에 있습니다.
 
 ### 이전 버전에서 업데이트
 
-위 배포 파일로 수동 업데이트해 주세요. 트레이나 메뉴 막대에 남은 앱까지 먼저 종료합니다. 현재 서명 방식에서는 자동 설치가 원활하지 않을 수 있습니다.
+v1.0.6 이하를 사용 중이라면 위 다운로드 링크를 이용하거나 브라우저에서 [GitHub Releases](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases)를 직접 열어 업데이트 파일을 받아 주세요.
+
+앱이 새 버전을 확인하면 우측 하단에 알림을 표시합니다. v1.0.7부터는 알림의 **공식 릴리스**를 누르면 브라우저에서 GitHub Releases가 열립니다. 운영체제에 맞는 파일을 받아 주세요. **설정 → 업데이트 확인**으로 직접 확인할 수도 있습니다.
+
+Windows 설치 파일을 실행하거나 Mac 앱을 대치하기 전에 트레이·메뉴 막대에 남은 앱까지 종료합니다. 앱을 종료해도 업데이트가 자동 설치되지는 않습니다.
 
 다운로드 경로와 이름 규칙 등 기존의 유효한 저장 설정은 유지합니다. 설정을 초기화할 필요는 없으며, 앱 업데이트만으로 기존 음악 파일이 재정리되지는 않습니다.
 

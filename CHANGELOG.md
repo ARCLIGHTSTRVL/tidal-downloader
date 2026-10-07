@@ -4,7 +4,15 @@
 
 All notable user-visible changes to TIDAL DOWNLOADER.
 
-## v1.0.6
+## v1.0.7 - Manual updates from GitHub Releases
+
+- Keep version checks and the new-version notification at the bottom right. Its **Official releases** button opens the project's GitHub Releases page in your browser for manual download and installation.
+- Disable automatic update installation when quitting the app.
+- Retain existing valid saved settings and naming rules.
+
+See the [v1.0.7 release notes](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/tag/v1.0.7) for downloads and update guidance.
+
+## v1.0.6 - Windows playback and Tag Editor fixes
 
 - Fix a blank console that could appear when starting or seeking streamed or downloaded music on Windows.
 - Make the Tag Editor's album sort tooltip and menu follow the English/Korean language setting without changing the selected sort order.

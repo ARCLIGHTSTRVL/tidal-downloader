@@ -15,9 +15,9 @@ Download music from Tidal, play your collection, and organize folders and tags.<
 
 ## Download
 
-### v1.0.6 (Windows + macOS)
+### v1.0.7 (Windows + macOS)
 
-This version fixes the extra console window during Windows playback and makes the Tag Editor's album sort menu follow the selected language. See the [release notes](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/tag/v1.0.6) or [changelog](CHANGELOG.md) for details.
+Update notifications now open GitHub Releases for manual download and installation. Version checks and new-version notifications remain available. See the [release notes](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/tag/v1.0.7) or [changelog](CHANGELOG.md) for details.
 
 <table align="center">
   <thead>
@@ -29,20 +29,20 @@ This version fixes the extra console window during Windows playback and makes th
   <tbody>
     <tr>
       <td align="center">Windows 10/11 (x64)</td>
-      <td align="center"><a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.6/TIDAL-DOWNLOADER-Setup-1.0.6.exe">Setup .exe</a></td>
+      <td align="center"><a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.7/TIDAL-DOWNLOADER-Setup-1.0.7.exe">Setup .exe</a></td>
     </tr>
     <tr>
       <td align="center">macOS 12+ Apple Silicon (arm64)</td>
-      <td align="center"><a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.6/TIDAL-DOWNLOADER-1.0.6-arm64.dmg">DMG</a> · <a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.6/TIDAL-DOWNLOADER-1.0.6-arm64-mac.zip">ZIP</a></td>
+      <td align="center"><a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.7/TIDAL-DOWNLOADER-1.0.7-arm64.dmg">DMG</a> · <a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.7/TIDAL-DOWNLOADER-1.0.7-arm64-mac.zip">ZIP</a></td>
     </tr>
     <tr>
       <td align="center">macOS 12+ Intel (x64)</td>
-      <td align="center"><a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.6/TIDAL-DOWNLOADER-1.0.6.dmg">DMG</a> · <a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.6/TIDAL-DOWNLOADER-1.0.6-mac.zip">ZIP</a></td>
+      <td align="center"><a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.7/TIDAL-DOWNLOADER-1.0.7.dmg">DMG</a> · <a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.7/TIDAL-DOWNLOADER-1.0.7-mac.zip">ZIP</a></td>
     </tr>
   </tbody>
 </table>
 
-The Intel build was tested under Rosetta on Apple Silicon, not on Intel Mac hardware.
+The Intel build was tested under Rosetta on Apple Silicon. Intel Mac hardware has not been tested.
 
 </div>
 
@@ -98,11 +98,15 @@ The installer is self-signed by ARCLIGHTSTRVL and timestamped. Windows may show 
 2. Open the DMG and drag **TIDAL DOWNLOADER** into **Applications**. If you are updating, replace the existing app after quitting it.
 3. Eject the DMG and open the app from Applications. For the ZIP download, extract it and move the app to Applications.
 
-Mac builds have no Apple Developer ID signature or notarization, so Gatekeeper blocks them by default. To allow the app, use **Open Anyway** under **System Settings → Privacy & Security**. On Monterey, this is under **System Preferences → Security & Privacy**.
+Mac builds are ad-hoc signed without an Apple Developer ID signature or notarization, so Gatekeeper blocks them by default. To allow the app, use **Open Anyway** under **System Settings → Privacy & Security**. On Monterey, this is under **System Preferences → Security & Privacy**.
 
 ### Updating from an earlier version
 
-Use the downloads above to update manually. Quit the app first, including any tray or menu-bar instance. Automatic installation is not reliable with the current signing setup.
+If you are using v1.0.6 or earlier, use the downloads above or open [GitHub Releases](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases) directly in your browser to update.
+
+The app checks for new versions and shows a notification at the bottom right. In v1.0.7 and later, select **Official releases** in that notification to open GitHub Releases in your browser, then download the file for your OS. You can also use **Settings → Check for updates**.
+
+Quit the app, including any tray or menu-bar instance, before running the Windows installer or replacing the Mac app. Quitting the app does not automatically install an update.
 
 Existing valid saved settings, including download paths and naming rules, are retained. You do not need to reset settings. Updating the app does not reorganize your music files.
 

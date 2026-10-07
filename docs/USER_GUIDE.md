@@ -2,7 +2,7 @@
 
 **English** | [한국어](USER_GUIDE.ko.md)
 
-This guide covers **v1.0.5**. See the [README](../README.md#download) for downloads, requirements and installation, or the [changelog](../CHANGELOG.md) for release history.
+This guide covers **v1.0.7**. See the [README](../README.md#download) for downloads, requirements and installation, or the [changelog](../CHANGELOG.md) for release history.
 
 ## Contents
 
@@ -263,7 +263,9 @@ Settings can report that a backup was recovered, some values were repaired, or u
 
 If recovery or resetting selects the default download location, your previous audio files may simply be outside the displayed library. Choose their existing folder in **Download location**.
 
-**Check for updates** reports update availability when the updater can reach the release service. The app may offer download/restart actions, but automatic installation is not reliable with the current signing setup. Follow the [manual update instructions](../README.md#updating-from-an-earlier-version): download the matching release file and quit the app, including its tray or menu-bar instance, before updating. **GitHub Star** opens the project repository.
+The app checks for new versions in the background. **Settings → Check for updates** also checks when the release service is reachable. A new version appears in a notification at the bottom right. From v1.0.7 onward, select **Official releases** in that notification to open the project's [GitHub Releases](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases) in your browser. If you are using v1.0.6 or earlier, open GitHub Releases directly or use the README download links.
+
+Download the file for your OS, then follow the [manual update instructions](../README.md#updating-from-an-earlier-version). Quit the app, including its tray or menu-bar instance, before installing. Quitting does not automatically install an update, and existing valid saved settings remain in place. **GitHub Star** opens the project repository.
 
 ## Mouse & keyboard shortcuts
 
