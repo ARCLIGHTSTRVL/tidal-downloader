@@ -4,6 +4,45 @@
 
 All notable user-visible changes to TIDAL DOWNLOADER.
 
+## v1.0.8 - Faster Max-quality playback and network-drive downloads
+
+### Playback
+
+- Max-quality (Hi-Res) tracks start playing almost immediately while they stream, instead of after the whole track downloads, in both shared and exclusive output. If streaming fails, the app falls back to downloading the whole track as before.
+- Seeking while paused now starts playback from the new position in every output mode.
+- Seek 5 seconds with the ← / → arrow keys. They do nothing while you are typing in a text field.
+- When you skip to a track from another album, the player shows that album's artwork.
+- Tracks your account cannot play show a notice at the bottom right instead of loading forever. Next, previous and auto-advance skip them and say which track was skipped.
+
+### Downloads
+
+- Download into folders on network drives (mapped drives and SMB/NAS shares) and, on macOS, FAT32/exFAT drives. Each track is finished and checked on this computer, then copied in as a new file. Files already on those drives are never replaced, moved, renamed or deleted, and the app explains why when you try.
+- When you choose such a folder in Settings, the app explains this under the download location. If a track is already in that folder, the existing file is kept and the Downloads page says so.
+- Windows FAT32/exFAT drives still cannot be used as the download folder; the app now says why when you choose one.
+- Playlist downloads run 3 at a time like album downloads and can be cancelled all at once. Several playlists can download at the same time, each with its own progress and cancel button.
+- Album and playlist downloads skip tracks your account cannot download and tell you how many.
+- Album cards (artist page, search, recent, View all) show the completed mark once every track TIDAL provides is downloaded. Previously a card never showed it when TIDAL listed more tracks than it provides.
+
+### Library and deleting
+
+- On album and playlist pages, delete a single downloaded track with one click on its check mark; hovering shows a red ✕ and a tooltip. Holding for a second is only needed to delete everything.
+- When every available track of a playlist is downloaded, a delete-all button (hold for a second) appears at the top of the playlist.
+- Deleting works again for files left by a cancelled playlist download, and deleting from the playlist page removes that playlist's files.
+- While online, click an artist name in the Library grid view to open the artist page.
+
+### Interface
+
+- Notices at the bottom right show a bar that fills over 5 seconds and then close by themselves; ✕ closes them right away. They stack above the new-version notification.
+- Downloads page: entries with several lines to check fold into "⚠ Needs attention: N" with a "Details ▾" toggle that expands them. Long paths wrap at word boundaries. The completed check and the clear-finished, remove and cancel buttons are redrawn and aligned.
+- The ✕ next to download percentages in the player bar and track lists is redrawn to line up with the numbers.
+- Over bright artwork, the album overlay's text, icons, quality badges, track list and album info, and the window title above it, switch to dark ink.
+
+### Reliability
+
+- Fixed a rare case where the app kept running in the background, with no window, after you closed it.
+
+See the [v1.0.8 release notes](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/tag/v1.0.8) for downloads and update guidance.
+
 ## v1.0.7 - Manual updates from GitHub Releases
 
 - Keep version checks and the new-version notification at the bottom right. Its **Official releases** button opens the project's GitHub Releases page in your browser for manual download and installation.

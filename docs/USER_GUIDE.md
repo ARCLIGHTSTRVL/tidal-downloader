@@ -107,6 +107,15 @@ If an artist or playlist would share a folder name with a different one, the app
 
 A cancellation request does not mean that nothing reached disk. A file may already have been saved, or cleanup may still need attention. Read the result in Downloads before removing leftover files or starting another attempt.
 
+### Network drives and FAT drives
+
+Before the app replaces, moves, renames or deletes a file, it checks that it is the exact file it means to change, using the permanent file ID the drive gives it. Network drives (mapped drives, SMB/NAS shares) do not guarantee those IDs, and FAT32/exFAT drives do not keep them reliably. On those drives the download folder is **download-only**:
+
+- Each track is downloaded, checked and tagged on this computer first, then copied into the folder as a new file. The app checks the copy before keeping it.
+- A file with the same name is never replaced. If it is the same track, the download keeps it; otherwise the new track gets a different name.
+- Deleting, reorganizing, renaming, re-tagging and other library changes are refused for files on that drive, with the reason.
+- On Windows, FAT32/exFAT drives cannot be used as the download folder at all. Choose a folder on a local NTFS drive and copy the files over.
+
 ## Downloads page
 
 **Downloads** shows the current session's attempts, including progress and completed, failed or cancelled results. An attempt can report that audio was saved while tags, library registration or cleanup did not finish. Read those details even if the music file exists.
@@ -273,6 +282,7 @@ Download the file for your OS, then follow the [manual update instructions](../R
 - **Click the current sidebar tab again:** return Search to home, or Library/Tag Editor to its root view.
 - **Enter in Search:** open full results, or open a pasted playlist link/UUID.
 - **Spacebar:** play/pause when a track is selected and focus is outside text fields and interactive controls.
+- **← / →:** seek back or forward 5 seconds while focus is outside text fields.
 - **Esc or a background click:** dismiss supported menus and dialogs. Operations that are applying changes may keep their dialog open.
 
 ## Troubleshooting
