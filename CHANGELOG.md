@@ -8,7 +8,7 @@ All notable user-visible changes to TIDAL DOWNLOADER.
 
 ### Playback
 
-- **At every quality** (Max, HiFi and High), tracks start playing almost immediately while they stream instead of waiting for the whole track to download, in both shared and exclusive output. If streaming fails, the app falls back to downloading the whole track as before.
+- **At every quality** (Max, HiFi and High), tracks start playing almost immediately in both shared and exclusive output.
 - Seeking while paused now starts playback from the new position in every output mode.
 - Seek 5 seconds with the ← / → arrow keys. They do nothing while you are typing in a text field.
 - When you skip to a track from another album, the player shows that album's artwork.

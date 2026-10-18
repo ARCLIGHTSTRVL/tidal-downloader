@@ -17,7 +17,7 @@ Download music from Tidal, play your collection, and organize folders and tags.<
 
 ### v1.0.8 (Windows + macOS)
 
-Tracks now start playing almost immediately **at every quality** instead of after the whole track downloads, and you can download into folders on network drives. See the [release notes](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/tag/v1.0.8) or [changelog](CHANGELOG.md) for details.
+Tracks now start playing almost immediately **at every quality**, and you can download into folders on network drives. See the [release notes](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/tag/v1.0.8) or [changelog](CHANGELOG.md) for details.
 
 <table align="center">
   <thead>
