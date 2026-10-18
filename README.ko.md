@@ -17,7 +17,7 @@ Tidal 음악을 다운로드하고, 재생하고, 폴더와 태그를 정리하�
 
 ### v1.0.8 (Windows + macOS)
 
-Max 음질 곡이 전체를 받을 때까지 기다리지 않고 거의 바로 재생되고, 네트워크 드라이브의 폴더에도 다운로드할 수 있습니다. 자세한 내용은 [릴리스 안내](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/tag/v1.0.8)와 [변경 기록](CHANGELOG.ko.md)을 참고하세요.
+**모든 음질**에서 곡이 전체를 받을 때까지 기다리지 않고 거의 바로 재생되고, 네트워크 드라이브의 폴더에도 다운로드할 수 있습니다. 자세한 내용은 [릴리스 안내](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/tag/v1.0.8)와 [변경 기록](CHANGELOG.ko.md)을 참고하세요.
 
 <table align="center">
   <thead>
