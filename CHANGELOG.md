@@ -4,6 +4,39 @@
 
 All notable user-visible changes to TIDAL DOWNLOADER.
 
+## v1.0.9 - Tag Editor handles large folders, per-folder view and album cover files
+
+### Tag Editor
+
+- Adding a large folder with **Open Folder** or drag-and-drop no longer freezes the app (macOS) or leaves a black window (Windows). Covers embedded in the tracks were being copied over and over in memory. We checked adding a 1,000-track folder while a 3,000-track folder was open, on Windows and on Apple Silicon Macs.
+- Albums appear while a folder is still being read. **Cancel loading**, next to the loading indicator, stops it: a folder you were adding is removed again, and folders that were already loaded stay.
+- Dropping many files at once, reopening Tag Editor and applying a field to every track of a large album are much faster. Reopening skips files that have not changed since they were read.
+- **Group by folder** in the top bar shows the albums of each loaded folder in its own section, with album and file counts, and each section can be collapsed. Files added one by one come last. **Show all albums** switches back, and the choice is remembered.
+- Opening Tag Editor right after the app starts no longer leaves the download folder unloaded.
+- Adding single files while a folder is still loading no longer makes that folder disappear. If a folder keeps being interrupted before it is fully read, the editor says so and asks you to press Refresh.
+- The loading indicator and the Refresh tooltip follow the app language.
+
+### Album covers (#14)
+
+- New setting **Save cover in album folder**: album downloads also save the cover as `cover.jpg` (default) or `folder.jpg` next to the tracks. It is off by default. An existing file with that name is never replaced, and playlist folders are skipped. It also works for folders on network drives.
+- Reorganize, the automatic move after saving tags and TIDAL library sync now take `folder.jpg` and `cover.jpg` along with their album instead of leaving them in the old folder.
+- Deleting an album folder also removes its `cover.jpg`, as it already did for `folder.jpg`.
+
+### Library
+
+- Reorganize and TIDAL library sync no longer refuse to move a track because another artist has an album and file with the same name (for example two artists' `Greatest Hits/01 - Intro.flac`).
+
+### Reliability
+
+- If the app window stops responding, the app asks whether to **Wait** or **Reload**. Reloading discards unsaved tag edits.
+- If the window's display process crashes, the app reloads the window instead of leaving it black.
+
+### Settings
+
+- The audio quality description now says playback starts almost immediately at every quality. It used to say Max can take 1–3 seconds.
+
+See the [v1.0.9 release notes](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/tag/v1.0.9) for downloads and update guidance.
+
 ## v1.0.8 - Faster playback at every quality and network-drive downloads
 
 ### Playback

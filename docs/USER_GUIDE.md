@@ -96,6 +96,8 @@ The app tries a smaller size when the requested image is unavailable. A cover's 
 
 Turn off **Album art hover tilt** in Settings if you prefer static cards.
 
+Turn on **Save cover in album folder** to also save the cover next to the tracks of each downloaded album, as `cover.jpg` (default) or `folder.jpg`. An existing file with that name is never replaced, and playlist folders are skipped. Reorganize, the automatic move after saving tags and library sync take these files along with their album, and deleting an album folder removes them.
+
 ## Downloading
 
 - **One track:** click its download icon in Search, an album or a playlist. The player bar also has a download control.
@@ -146,6 +148,8 @@ Group deletion targets the selected tracks. Artist and playlist cleanup may also
 
 Tag Editor loads the configured download folder and lets you add more files or folders with **Open Files**, **Open Folder**, or drag-and-drop. **Refresh** rereads loaded folders. **Clear directories** removes selected roots from the editor; it does not delete their disk files.
 
+Albums appear while a folder is still being read. **Cancel loading**, next to the loading indicator, stops reading: a folder you were adding is removed again, and folders that were already loaded stay. **Group by folder** in the top bar shows the albums of each loaded folder in its own collapsible section; files added one by one come last, and **Show all albums** switches back.
+
 Open an album or playlist card to edit its files:
 
 1. Select a track, change its metadata, then click **Save**. **Save Album** saves the edited tracks in the open group. **Revert** discards the selected track's unsaved metadata draft.
@@ -189,6 +193,7 @@ Most settings save when changed. Download naming and album grouping have their o
 | **Background playback & tray** | Closing the main window keeps the app running in the tray or menu bar. Use its menu to show the app or quit. |
 | **Audio quality** | Requested tier for playback and downloads; see [Audio quality](#audio-quality). |
 | **Album art quality / hover tilt** | Embedded artwork resolution and card animation. |
+| **Save cover in album folder** | Also save each downloaded album's cover as `cover.jpg` or `folder.jpg` next to its tracks. |
 | **Download location** | Root folder for audio and the library being displayed. Choosing another folder does not move the old library. |
 | **Album art download location** | Destination for separately saved cover art. |
 | **Language** | English or Korean. |
@@ -304,6 +309,9 @@ It may contain images or other files, or deletion may have been refused. Read th
 
 **Tag Editor still shows an unsaved or detached draft after saving.**
 Check the save notice and disk file before retrying. Some writes may already have happened. Refresh after resolving external moves or replacements; use Revert only when you intend to discard that draft.
+
+**The app asks whether to wait or reload.**
+The window stopped responding. **Wait** keeps everything as it is; **Reload** reloads the window and discards unsaved tag edits.
 
 **Drag-and-drop does not work on Windows.**
 Explorer cannot drop into an app running as administrator. Relaunch the app normally, or use Open Files / Open Folder.
