@@ -19,7 +19,7 @@ assignees: ''
 ## Actual behavior
 
 ## Environment
-- App version: <!-- At the bottom of Settings (e.g. 1.0.5) -->
+- App version: <!-- At the bottom of Settings (e.g. 1.0.9) -->
 - OS + version: <!-- e.g. Windows 11 23H2 / macOS 14.4 -->
 - Requested audio quality: <!-- Max / HiFi / High; subscription plan if relevant -->
 - Audio device: <!-- if relevant — DAC / built-in / Bluetooth, exclusive mode on or off -->

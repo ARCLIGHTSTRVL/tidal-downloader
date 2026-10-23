@@ -2,7 +2,7 @@
 
 **English** | [한국어](USER_GUIDE.ko.md)
 
-This guide covers **v1.0.7**. See the [README](../README.md#download) for downloads, requirements and installation, or the [changelog](../CHANGELOG.md) for release history.
+This guide covers **v1.0.9**. See the [README](../README.md#download) for downloads, requirements and installation, or the [changelog](../CHANGELOG.md) for release history.
 
 ## Contents
 
