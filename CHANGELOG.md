@@ -4,6 +4,30 @@
 
 All notable user-visible changes to TIDAL DOWNLOADER.
 
+## v1.0.10 - HE-AAC tracks saved, every album edition listed, account-country catalog
+
+### Downloads (#15)
+
+- Some tracks are offered by TIDAL only as 96 kbps HE-AAC (**Low**), whatever quality you request. Downloading them failed with `M4A verification: sampleRate changed`, and retrying or changing the quality did not help. They are now saved. The file check treated the normal difference between the HE-AAC core sample rate and the doubled rate FFmpeg records as damage. The compressed audio data is saved unchanged.
+- Mono HE-AAC, HE-AAC v2 and HE-AAC whose file does not signal SBR (implicit SBR) are still refused. We have not had real files of these kinds to check.
+- Tag Editor shows a **Low** quality badge on these tracks. It showed no badge before.
+- Checked on Windows with the opening segments of one affected track, and with test files on Windows and macOS.
+
+### Artist pages (#16)
+
+- An artist's page now lists both the clean and the explicit edition of an album. Explicit editions are marked **E** on the album card and next to the album title.
+- An EP and a single with the same title and release year are both listed.
+- Clicking the title of the playing track in the player opens the edition that track belongs to, even when the artist page lists the other edition.
+- While a TIDAL track is playing, **Next Album** and **Previous Album** in the tray or menu-bar menu skip other editions of the same release.
+
+### Account country (#17)
+
+- Search, artist pages, albums, playlists, playback and downloads now use the country of your TIDAL account. Until now most of these requests used the US catalog for every account.
+- If your account country is not the US, search and artist pages now show your country's listing: albums available only in the US disappear, and albums available in your country but not in the US appear.
+- If the saved login carries no account country, the app no longer falls back to the US. It says so and asks you to log in to TIDAL again.
+
+See the [v1.0.10 release notes](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/tag/v1.0.10) for downloads and update guidance.
+
 ## v1.0.9 - Tag Editor handles large folders, per-folder view and album cover files
 
 ### Tag Editor

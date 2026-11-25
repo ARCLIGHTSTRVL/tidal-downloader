@@ -15,9 +15,9 @@ Download music from Tidal, play your collection, and organize folders and tags.<
 
 ## Download
 
-### v1.0.9 (Windows + macOS)
+### v1.0.10 (Windows + macOS)
 
-Tag Editor no longer freezes when you add large folders, can group albums by folder, and downloads can save the album cover as `cover.jpg` or `folder.jpg`. See the [release notes](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/tag/v1.0.9) or [changelog](CHANGELOG.md) for details.
+Tracks offered only as 96 kbps HE-AAC are now saved, artist pages list both the clean and the explicit edition of an album, and the catalog follows your TIDAL account's country instead of always the US. See the [release notes](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/tag/v1.0.10) or [changelog](CHANGELOG.md) for details.
 
 <table align="center">
   <thead>
@@ -29,15 +29,15 @@ Tag Editor no longer freezes when you add large folders, can group albums by fol
   <tbody>
     <tr>
       <td align="center">Windows 10/11 (x64)</td>
-      <td align="center"><a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.9/TIDAL-DOWNLOADER-Setup-1.0.9.exe">Setup .exe</a></td>
+      <td align="center"><a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.10/TIDAL-DOWNLOADER-Setup-1.0.10.exe">Setup .exe</a></td>
     </tr>
     <tr>
       <td align="center">macOS 12+ Apple Silicon (arm64)</td>
-      <td align="center"><a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.9/TIDAL-DOWNLOADER-1.0.9-arm64.dmg">DMG</a> · <a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.9/TIDAL-DOWNLOADER-1.0.9-arm64-mac.zip">ZIP</a></td>
+      <td align="center"><a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.10/TIDAL-DOWNLOADER-1.0.10-arm64.dmg">DMG</a> · <a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.10/TIDAL-DOWNLOADER-1.0.10-arm64-mac.zip">ZIP</a></td>
     </tr>
     <tr>
       <td align="center">macOS 12+ Intel (x64)</td>
-      <td align="center"><a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.9/TIDAL-DOWNLOADER-1.0.9.dmg">DMG</a> · <a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.9/TIDAL-DOWNLOADER-1.0.9-mac.zip">ZIP</a></td>
+      <td align="center"><a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.10/TIDAL-DOWNLOADER-1.0.10.dmg">DMG</a> · <a href="https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/download/v1.0.10/TIDAL-DOWNLOADER-1.0.10-mac.zip">ZIP</a></td>
     </tr>
   </tbody>
 </table>

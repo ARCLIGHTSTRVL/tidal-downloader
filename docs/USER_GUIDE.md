@@ -2,7 +2,7 @@
 
 **English** | [한국어](USER_GUIDE.ko.md)
 
-This guide covers **v1.0.9**. See the [README](../README.md#download) for downloads, requirements and installation, or the [changelog](../CHANGELOG.md) for release history.
+This guide covers **v1.0.10**. See the [README](../README.md#download) for downloads, requirements and installation, or the [changelog](../CHANGELOG.md) for release history.
 
 ## Contents
 
@@ -38,11 +38,11 @@ Keep **Auto-refresh** enabled to let the app renew its session. Tidal may still 
 
 ## Search & discovery
 
-Enter a name in the search bar. Select a result from the dropdown, or press **Enter** for the full results page. Results can include artists, albums, tracks and playlists.
+Enter a name in the search bar. Select a result from the dropdown, or press **Enter** for the full results page. Results can include artists, albums, tracks and playlists. Search, artist pages and albums show the catalog of your TIDAL account's country.
 
 The home view shows your favorited artists, **My Playlists**, and recent artists, albums, EPs, singles and playlists when those lists contain items. Use **View all** to open a longer list.
 
-- Open an **artist** to browse albums and EPs/singles. The heart adds or removes the artist from the app's favorites.
+- Open an **artist** to browse albums and EPs/singles. When an album has a clean and an explicit edition, both are listed, and the explicit one is marked **E**. The heart adds or removes the artist from the app's favorites.
 - Open an **album** to see its tracks, play music or download it. Artist names link to their artist pages.
 - Click a **cover** to open the larger image viewer, where available.
 
@@ -78,7 +78,7 @@ The **✕ beside playlist progress** stops the batch before it starts the next t
 | **HiFi** | FLAC at 16-bit / 44.1 kHz | High AAC |
 | **High** | AAC at 320 kbps | AAC is expected at this tier |
 
-The result depends on the track and what Tidal provides to your session. Choosing Max does not make every track high-resolution. Max and HiFi can both fall back to lossy **High**, saved as `.m4a`. FLAC downloads use `.flac`; the supplied audio is saved without re-encoding.
+The result depends on the track and what Tidal provides to your session. Choosing Max does not make every track high-resolution. Max and HiFi can both fall back to lossy **High**, saved as `.m4a`. Some tracks are offered only as 96 kbps HE-AAC, shown as **Low**; they are also saved as `.m4a`. FLAC downloads use `.flac`; the supplied audio is saved without re-encoding.
 
 Check the actual track's quality information instead of relying only on the selected setting. **Check available quality** tests a small sample of tracks for your current session and reports lossless results or AAC downgrades. It does not establish availability for the whole catalog. Playback startup time varies with the track, connection and processing needed.
 
@@ -294,6 +294,9 @@ Download the file for your OS, then follow the [manual update instructions](../R
 
 **Max or HiFi downloads are M4A.**
 Tidal may have supplied AAC. Use **Check available quality**, inspect the actual track quality and see [Audio quality](#audio-quality). Renaming an M4A file to FLAC does not make it lossless.
+
+**An album is missing from an artist page.**
+The app shows the catalog of your TIDAL account's country. Albums that TIDAL does not offer in that country are not listed.
 
 **A download failed or was cancelled, but a file remains.**
 Read the attempt's details in Downloads. Audio may have been saved before tags or cleanup failed. Let active work finish and verify the reported files before retrying or removing leftovers.
