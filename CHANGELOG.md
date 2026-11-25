@@ -24,7 +24,6 @@ All notable user-visible changes to TIDAL DOWNLOADER.
 
 - Search, artist pages, albums, playlists, playback and downloads now use the country of your TIDAL account. Until now most of these requests used the US catalog for every account.
 - If your account country is not the US, search and artist pages now show your country's listing: albums available only in the US disappear, and albums available in your country but not in the US appear.
-- If the saved login carries no account country, the app no longer falls back to the US. It says so and asks you to log in to TIDAL again.
 
 See the [v1.0.10 release notes](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/tag/v1.0.10) for downloads and update guidance.
 
