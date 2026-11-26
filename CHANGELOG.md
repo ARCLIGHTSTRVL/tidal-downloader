@@ -12,7 +12,7 @@ All notable user-visible changes to TIDAL DOWNLOADER.
 - Mono HE-AAC and HE-AAC v2 are still refused. We have not had real files of these kinds to check.
 - Tag Editor shows a **Low** quality badge on these tracks. It showed no badge before.
 - Before download, the album page shows these tracks with the quality from TIDAL's catalog (for example High). After download the Library shows **Low**.
-- Checked on Windows with the opening segments of one affected track, and with test files on Windows and macOS.
+- Checked with test files on Windows and macOS (Apple Silicon).
 
 ### Artist pages (#16)
 
