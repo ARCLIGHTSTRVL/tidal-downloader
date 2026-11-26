@@ -17,7 +17,7 @@ Tidal 음악을 다운로드하고, 재생하고, 폴더와 태그를 정리하�
 
 ### v1.0.10 (Windows + macOS)
 
-96kbps HE-AAC로만 제공되는 곡도 저장되고, 아티스트 페이지에 앨범의 일반 판본과 청소년 유해 표현 판본이 모두 나오며, 카탈로그가 늘 미국이 아니라 TIDAL 계정의 국가를 따릅니다. 자세한 내용은 [릴리스 안내](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/tag/v1.0.10)와 [변경 기록](CHANGELOG.ko.md)을 참고하세요.
+96kbps HE-AAC로만 제공되는 곡도 저장되고, 아티스트 페이지에 앨범의 일반 판본과 청소년 유해 표현 판본이 모두 나오며, 카탈로그가 미국이 아니라 TIDAL 계정의 국가를 따릅니다. 자세한 내용은 [릴리스 안내](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/tag/v1.0.10)와 [변경 기록](CHANGELOG.ko.md)을 참고하세요.
 
 <table align="center">
   <thead>
@@ -140,7 +140,7 @@ Windows 설치 파일을 실행하거나 Mac 앱을 대치하기 전에 트레�
 | HiFi | 16비트 / 44.1 kHz FLAC |
 | High | 320 kbps AAC |
 
-무손실 음원을 받을 수 없으면 **Max·HiFi에서도 High로 내려가 AAC가 `.m4a`로 저장될 수 있습니다.** 곡에 표시된 실제 음질을 확인해 주세요. **설정 → 사용 가능한 음질 확인**에서는 샘플 곡으로 현재 계정에 제공되는 음질을 확인할 수 있습니다.
+무손실 음원을 받을 수 없으면 **Max·HiFi에서도 High로 내려가 AAC가 `.m4a`로 저장될 수 있습니다.** 96kbps HE-AAC(**Low**)로만 제공되는 곡도 있으며, 이 곡도 `.m4a`로 저장합니다. 곡에 표시된 실제 음질을 확인해 주세요. **설정 → 사용 가능한 음질 확인**에서는 샘플 곡으로 현재 계정에 제공되는 음질을 확인할 수 있습니다.
 
 <a id="동작-방식"></a>
 

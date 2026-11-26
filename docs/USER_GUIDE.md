@@ -78,7 +78,7 @@ The **✕ beside playlist progress** stops the batch before it starts the next t
 | **HiFi** | FLAC at 16-bit / 44.1 kHz | High AAC |
 | **High** | AAC at 320 kbps | AAC is expected at this tier |
 
-The result depends on the track and what Tidal provides to your session. Choosing Max does not make every track high-resolution. Max and HiFi can both fall back to lossy **High**, saved as `.m4a`. Some tracks are offered only as 96 kbps HE-AAC, shown as **Low**; they are also saved as `.m4a`. FLAC downloads use `.flac`; the supplied audio is saved without re-encoding.
+The result depends on the track and what Tidal provides to your session. Choosing Max does not make every track high-resolution. Max and HiFi can both fall back to lossy **High**, saved as `.m4a`. Some tracks are offered only as 96 kbps HE-AAC; they are also saved as `.m4a`. The album page shows the quality from TIDAL's catalog before download, and the Library shows **Low** after. FLAC downloads use `.flac`; the supplied audio is saved without re-encoding.
 
 Check the actual track's quality information instead of relying only on the selected setting. **Check available quality** tests a small sample of tracks for your current session and reports lossless results or AAC downgrades. It does not establish availability for the whole catalog. Playback startup time varies with the track, connection and processing needed.
 
@@ -296,7 +296,7 @@ Download the file for your OS, then follow the [manual update instructions](../R
 Tidal may have supplied AAC. Use **Check available quality**, inspect the actual track quality and see [Audio quality](#audio-quality). Renaming an M4A file to FLAC does not make it lossless.
 
 **An album is missing from an artist page.**
-The app shows the catalog of your TIDAL account's country. Albums that TIDAL does not offer in that country are not listed.
+The app shows the catalog of your TIDAL account's country. Albums that TIDAL does not offer in that country are not listed. Releases with the same title, year, type and explicit flag are shown as one album, and albums the artist only appears on are not listed.
 
 **A download failed or was cancelled, but a file remains.**
 Read the attempt's details in Downloads. Audio may have been saved before tags or cleanup failed. Let active work finish and verify the reported files before retrying or removing leftovers.

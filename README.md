@@ -17,7 +17,7 @@ Download music from Tidal, play your collection, and organize folders and tags.<
 
 ### v1.0.10 (Windows + macOS)
 
-Tracks offered only as 96 kbps HE-AAC are now saved, artist pages list both the clean and the explicit edition of an album, and the catalog follows your TIDAL account's country instead of always the US. See the [release notes](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/tag/v1.0.10) or [changelog](CHANGELOG.md) for details.
+Tracks offered only as 96 kbps HE-AAC are now saved, artist pages list both the clean and the explicit edition of an album, and the catalog follows your TIDAL account's country instead of the US. See the [release notes](https://github.com/ARCLIGHTSTRVL/tidal-downloader/releases/tag/v1.0.10) or [changelog](CHANGELOG.md) for details.
 
 <table align="center">
   <thead>
@@ -140,7 +140,7 @@ The [User Guide](docs/USER_GUIDE.md) covers playlists, naming examples and libra
 | HiFi | FLAC at 16-bit / 44.1 kHz |
 | High | AAC at 320 kbps |
 
-If lossless audio is unavailable, **Max and HiFi can fall back to High and save AAC as `.m4a`**. Check the quality shown for the track. **Settings → Check available quality** samples what Tidal currently returns for your account.
+If lossless audio is unavailable, **Max and HiFi can fall back to High and save AAC as `.m4a`**. Some tracks are offered only as 96 kbps HE-AAC (**Low**) and are also saved as `.m4a`. Check the quality shown for the track. **Settings → Check available quality** samples what Tidal currently returns for your account.
 
 <a id="how-it-works"></a>
 
